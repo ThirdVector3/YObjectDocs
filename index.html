@@ -3,40 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YaYObject Engine</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>YObject Docs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div class="top">
+    <button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+</button>
+    <div class="container">
+        <!-- Боковая панель навигации -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <!--<div class="logo-icon">🦀</div>-->
+                    <h1>YObject Docs</h1>
+                </div>
+            </div>
 
-        <div id="docsLink" class="topLogo">
-            Documentation
-        </div>
-        <div class="topEngineLogo">
-            <img src="images/YaYObject logo.png" alt="" srcset="">
-        </div>
+            <!--
+            <div class="search-box">
+                <input type="text" placeholder="Поиск по документации...">
+                <i class="fas fa-search"></i>
+            </div>
+            -->
+            
+            <ul class="nav-menu">
+                <li class="nav-section">
+                    <span class="section-title">Quick start</span>
+                    <ul>
+                        <li><a href="#getting-started" class="active"><i class="fas fa-rocket"></i>Getting started</a></li>
+                        <li><a href="#installation"><i class="fas fa-download"></i>Installation</a></li>
+                        <!--<li><a href="#hello-world"><i class="fas fa-code"></i> Hello World</a></li>-->
+                    </ul>
+                </li>
+                
+                <li class="nav-section">
+                    <span class="section-title">Basics</span>
+                    <ul>
+                        <li><a href="#variables"><i class="fas fa-memory"></i>Variables and Values</a></li>
+                        <li><a href="#basic-triggers"><i class="fas fa-key"></i>Basic Triggers</a></li>
+                        <li><a href="#conditions"><i class="fas fa-code-branch"></i>Conditions</a></li>
+                        <li><a href="#functions"><i class="fas fa-list"></i>Functions</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-section">
+                    <span class="section-title">Advanced</span>
+                    <ul>
+                        <li><a href="#structs"><i class="fas fa-th"></i>Structs</a></li>
+                        <li><a href="#traits"><i class="fas fa-puzzle-piece"></i>Traits</a></li>
+                        <li><a href="#implementations"><i class="fas fa-cube"></i>Implementations</a></li>
+                        <li><a href="#casts"><i class="fas fa-cube"></i>Casts</a></li>
+                        <li><a href="#libraries"><i class="fas fa-tasks"></i>Libraries</a></li>
+                        <!--
+                        <li><a href="#generics"><i class="fas fa-code-branch"></i> Обобщения</a></li>
+                        <li><a href="#concurrency"><i class="fas fa-tasks"></i> Многопоточность</a></li>
+                        <li><a href="#error-handling"><i class="fas fa-exclamation-triangle"></i> Обработка ошибок</a></li>
+                        -->
+                    </ul>
+                </li>
+                
+                <!--
+                <li class="nav-section">
+                    <span class="section-title">Other</span>
+                    <ul>
+                        <li><a href="#downloads"><i class="fas fa-file-download"></i> Скачать материалы</a></li>
+                        <li><a href="#books"><i class="fas fa-book"></i> Книги</a></li>
+                        <li><a href="#community"><i class="fas fa-users"></i> Сообщество</a></li>
+                    </ul>
+                </li>
+                -->
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="version">Version: 0.0.1 alpha</div>
+                <!--<a href="https://www.rust-lang.org" target="_blank" class="official-link">
+                    <i class="fas fa-external-link-alt"></i> Официальный сайт
+                </a>-->
+            </div>
+        </nav>
+
+        <!-- Основное содержимое -->
+        <main class="content">
+            <header class="content-header">
+                <h2 class="page-title" id="pageTitle">Документация Rust</h2>
+                <div class="breadcrumb">
+                    <a href="#getting-started">Main</a> / <span id="breadcrumbText">Getting Started</span>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Секция: Начало работы -->
+                <section id="getting-started" class="doc-section">
+                    <h1><i class="fas fa-rocket"></i>Getting Started</h1>
+                    <p class="lead">Rust — это язык системного программирования, ориентированный на безопасность, скорость и параллельное выполнение кода.</p>
+                    
+                    <div class="info-box">
+                        <div class="info-box-header">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Почему Rust?</h3>
+                        </div>
+                        <p>Rust обеспечивает безопасность памяти без сборщика мусора, гарантирует безопасность потоков и предлагает отличные инструменты для разработки.</p>
+                    </div>
+                    
+                    <h2>Основные особенности</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon safety">🛡️</div>
+                            <h3>Безопасность памяти</h3>
+                            <p>Нет нулевых указателей, висячих ссылок или состояний гонки данных во время компиляции.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon concurrency">⚡</div>
+                            <h3>Многопоточность</h3>
+                            <p>Безопасная работа с потоками без состояния гонки благодаря системе владения.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon performance">🚀</div>
+                            <h3>Производительность</h3>
+                            <p>Сопоставимая с C/C++ производительность с нулевой стоимостью абстракций.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Секция: Установка -->
+                <section id="installation" class="doc-section">
+                    <h1><i class="fas fa-download"></i>Installation</h1>
+                    <p>In this section, you can install YObject.</p>
+                    <p>Firstly, you need to download this mod.</p>
+                    <a href="downloads/mod.txt" download="yaymsc.yobject.geode" class="download-btn">
+                     <i class="fas fa-download"></i>Download
+                    </a>
+                    <!--
+                    <div class="downloads-grid">
+
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="download-info">
+                                <h3>Шпаргалка по Rust</h3>
+                                <p>PDF файл с основными концепциями и синтаксисом Rust</p>
+                                <p class="file-size">Размер: 2.1 MB</p>
+                            </div>
+                            <a href="downloads/rust-cheatsheet.pdf" download="Rust_Шпаргалка.pdf" class="download-btn">
+                                <i class="fas fa-download"></i> Скачать
+                            </a>
+                        </div>
+                        
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="download-info">
+                                <h3>Примеры кода</h3>
+                                <p>ZIP архив с примерами программ на Rust для начинающих</p>
+                                <p class="file-size">Размер: 1.5 MB</p>
+                            </div>
+                            <a href="#" class="download-btn disabled" onclick="showComingSoon()">
+                                <i class="fas fa-download"></i> Скоро
+                            </a>
+                        </div>
+                        
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="download-info">
+                                <h3>Книга "The Rust Book"</h3>
+                                <p>Официальное руководство по Rust (английская версия)</p>
+                                <p class="file-size">Размер: 3.8 MB</p>
+                            </div>
+                            <a href="#" class="download-btn disabled" onclick="showComingSoon()">
+                                <i class="fas fa-download"></i> Скоро
+                            </a>
+                        </div>
+                        
+                    </div>
+                    -->
+                    <!--
+                    <div class="notice">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Для работы ссылок на скачивание, создайте папку <code>downloads</code> в вашем репозитории и добавьте туда файлы. Первая ссылка уже готова к использованию.</p>
+                    </div>
+                    -->
+                    <p>Then you need to put this mod in Geode mods folder. This is example path to this folder</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Path</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></pre>
+                    </div>
+                    <p style="margin-bottom: 20rem;">That's all. You can open Geometry Dash and mod will be there</p>
+                </section>
+
+                <section id="installation1" class="doc-section">
+                    <h1><i class="fas fa-download"></i>Installation</h1>
+                    <p>Установить Rust можно с помощью <code>rustup</code> — утилиты для управления версиями Rust.</p>
+                    
+                    <h2>Установка на Linux/macOS</h2>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Терминал</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        </div>
+                        <pre><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre>
+                    </div>
+                    
+                    <h2>Установка на Windows</h2>
+                    <p>Скачайте и запустите <a href="https://win.rustup.rs/" target="_blank">rustup-init.exe</a> с официального сайта.</p>
+                    
+                    <h2>Проверка установки</h2>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Терминал</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        </div>
+                        <pre><code>rustc --version
+cargo --version</code></pre>
+                    </div>
+                </section>
+
+                <!-- Секция: Hello World -->
+                <section id="hello-world" class="doc-section">
+                    <h1><i class="fas fa-code"></i> Первая программа на Rust</h1>
+                    
+                    <h2>Создание проекта</h2>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Терминал</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        </div>
+                        <pre><code>cargo new hello_world
+cd hello_world</code></pre>
+                    </div>
+                    
+                    <h2>Код программы</h2>
+                    <p>Файл <code>src/main.rs</code>:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Rust</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        </div>
+                        <pre><code>fn main() {
+    println!("Hello, world!");
+}</code></pre>
+                    </div>
+                    
+                    <h2>Запуск программы</h2>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Терминал</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        </div>
+                        <pre><code>cargo run</code></pre>
+                    </div>
+                    
+                    <div class="output-block">
+                        <div class="output-header">Вывод:</div>
+                        <pre>   Compiling hello_world v0.1.0
+    Finished dev [unoptimized + debuginfo] target(s) in 0.45s
+     Running `target/debug/hello_world`
+Hello, world!</pre>
+                    </div>
+                </section>
+
+                <!-- Секция: Владение -->
+                <section id="ownership" class="doc-section">
+                    <h1><i class="fas fa-key"></i> Система владения в Rust</h1>
+                    <p>Система владения — одна из ключевых особенностей Rust, обеспечивающая безопасность памяти.</p>
+                    
+                    <h2>Три правила владения</h2>
+                    <ol class="rules-list">
+                        <li>У каждого значения в Rust есть переменная, которая называется его <strong>владельцем</strong>.</li>
+                        <li>У значения может быть только <strong>один владелец</strong> в каждый момент времени.</li>
+                        <li>Когда владелец выходит из области видимости, значение <strong>удаляется</strong>.</li>
+                    </ol>
+                    
+                    <h2>Пример</h2>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Rust</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        </div>
+                        <pre><code>fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1; // Владение перемещается от s1 к s2
+    
+    // println!("{}", s1); // Ошибка! s1 больше не владеет значением
+    println!("{}", s2); // OK
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- Секция: Скачать материалы -->
+            </div>
+
+            <footer class="content-footer">
+                <!--
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>YObject документация</h4>
+                        <p>Документация YObject</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Полезные ссылки</h4>
+                        <ul>
+                            <li><a href="https://doc.rust-lang.org/std/" target="_blank">Стандартная библиотека</a></li>
+                        </ul>
+                    </div>
+                </div>
+                -->
+            </footer>
+        </main>
     </div>
-    <div class="about">
-        <div class="aboutTextBlock">
-            <h1>About Engine</h1>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hhidisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <h1>About Engine</h1>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  <span class="paragraphSelection"> sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  </span>sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-            <p>hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd hdisdsd  sdd </p>
-        </div>
-    </div>
+
+    <!-- Кнопка для быстрой прокрутки наверх -->
+    <button id="scrollTop" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
 </body>
-<script src="main.js"></script>
 </html>
