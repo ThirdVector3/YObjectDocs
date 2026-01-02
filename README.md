@@ -1,2 +1,2 @@
-# YaYObject
-GDGameEngine
+# YObject
+GD Engine
