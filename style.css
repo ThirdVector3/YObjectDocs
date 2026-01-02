@@ -37,7 +37,7 @@ body {
     background-color: var(--dark-color);
     color: white;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     overflow-y: auto;
     transition: var(--transition);
     z-index: 100;
