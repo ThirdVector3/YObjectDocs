@@ -65,6 +65,7 @@ body {
 }
 
 .menu-toggle {
+    position: fixed;
     display: none;
     background: none;
     border: none;
