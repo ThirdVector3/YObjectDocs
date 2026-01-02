@@ -41,6 +41,7 @@ body {
     overflow-y: auto;
     transition: var(--transition);
     z-index: 100;
+    scrollbar-width: none;
 }
 
 .sidebar-header {
@@ -258,6 +259,10 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.code-block-text {
+    margin: 10px 10px;
+    
+}
 .code-block {
     background-color: var(--code-bg);
     border-radius: var(--border-radius);
@@ -302,6 +307,7 @@ body {
     color: #f8f8f2;
     font-size: 0.95rem;
     line-height: 1.5;
+    font-size: 15px;
 }
 
 .output-block {
@@ -560,6 +566,9 @@ body {
 .hljs-number {
   color: rgb(7, 186, 13);
 }
+.hljs-title {
+  color: rgb(7, 144, 186);
+}
 
 @media (max-width: 1024px) {
     .sidebar {
@@ -602,5 +611,8 @@ body {
     
     .page-title {
         font-size: 1.5rem;
+    }
+    .code-block code {
+    font-size: 10px;
     }
 }

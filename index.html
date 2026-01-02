@@ -45,8 +45,8 @@
                     <span class="section-title">Advanced</span>
                     <ul>
                         <li><a href="#structs"><i class="fas fa-th"></i>Structs</a></li>
-                        <li><a href="#traits"><i class="fas fa-puzzle-piece"></i>Traits</a></li>
                         <li><a href="#implementations"><i class="fas fa-cube"></i>Implementations</a></li>
+                        <li><a href="#traits"><i class="fas fa-puzzle-piece"></i>Traits</a></li>
                         <li><a href="#casts"><i class="fas fa-cube"></i>Casts</a></li>
                         <li><a href="#libraries"><i class="fas fa-tasks"></i>Libraries</a></li>
                     </ul>
@@ -171,13 +171,13 @@
                             <span>Path</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-html">C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></pre>
+                        <div class="code-block-text"><code class="language-html">C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></div>
                     </div>
                     <p style="margin-bottom: 20rem;">That's all. You can open Geometry Dash and mod will be there</p>
                 </section>
 
                 <section id="variables" class="doc-section">
-                    <h1><i class="fas fa-download"></i>Variables and Values</h1>
+                    <h1><i class="fas fa-memory"></i>Variables and Values</h1>
                     <p>Since you can't really print Hello, world! to the console using Geometry Dash triggers, we're going to get straight into the main features of YObject, the first of which being variables.</p>
                     
                     <h2>In YObject, variables are defined like this:</h2>
@@ -262,7 +262,7 @@ blockID = ?b</code></pre>
 
 
                 <section id="basic-triggers" class="doc-section">
-                    <h1><i class="fas fa-download"></i>Basic Triggers</h1>
+                    <h1><i class="fas fa-key"></i>Basic Triggers</h1>
                     <p>As you probably know, to move objects in Geometry Dash, you move the group the objects are in. If you wanted to, say, move group 5 ten units on the x-axis in 0.5 seconds, you would add a move trigger with those settings. In YObject we do it like this:</p>
                     
                     <div class="code-block">
@@ -289,6 +289,248 @@ wait(1)
 
                 </section>
 
+
+                <section id="conditions" class="doc-section">
+                    <h1><i class="fas fa-code-branch"></i>Conditions</h1>
+                    <p>YObject has a quite standard syntax for if-statements:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>if condition {
+    // code
+}
+
+if condition {
+    // code
+} else {
+    // code
+}
+
+if condition {
+    // code
+} else if other_condition {
+    // code
+} else {
+    // code
+}
+</code></pre>
+                    </div>
+
+                    <p>Also if you have item or timer in condition it will create item compare trigger to make in-game branching</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">if 10i == 5 {
+    // it will create compare trigger
+}
+                        </code></pre>
+                    </div>
+
+                </section>
+
+
+                
+                <section id="functions" class="doc-section">
+                    <h1><i class="fas fa-list"></i>Functions</h1>
+                    <p>YObject has 2 types of functions (and one of them has 2 subtypes):</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">// define a function:
+fn function(a: int, b: float = 10.5) {
+    1g.move(a, 0, b)
+}
+
+// simple call:
+func(10, 15)
+
+// trigger call with remembering group
+// (it will create spawn trigger and spawn this
+// triggers with remembering their group):
+func(10, 15)!
+
+// trigger call without remembering group with new group
+func(10,15)!!
+
+
+
+
+
+// also you can return value from function:
+
+fn function2(a: int, b: float = 10.5) -> float {
+    return a + b
+}
+                        </code></pre>
+                    </div>
+
+                    
+
+                </section>
+
+
+                <section id="structs" class="doc-section">
+                    <h1><i class="fas fa-th"></i>Structs</h1>
+                    <p>You can define structures in YObject:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>struct MyStruct {
+    intProperty: int
+    floatProperty: float
+}
+                        </code></pre>
+                    </div>
+
+                    <p>You can create and interact with structs like this:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">myObject = MyStruct
+
+myObject.intProperty = 10
+myObject.floatProperty = 20.3
+                        </code></pre>
+                    </div>
+
+                </section>
+
+                <section id="implementations" class="doc-section">
+                    <h1><i class="fas fa-cube"></i>Implementations</h1>
+                    <p>You can implement structures in YObject:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>impl MyStruct {
+    fn staticFunc(a: int) -> int {
+        return a + 2
+    }
+    fn nonstaticFunc(self, a: int) -> int {
+        return self.intProperty + a
+    }                         
+}
+
+
+MyStruct.staticFunc(10) // return 12
+
+a = MyStruct
+a.intProperty = 5
+a.nonStaticFunc(10) // return 15 because 5 + 10 = 15
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section id="traits" class="doc-section">
+                    <h1><i class="fas fa-puzzle-piece"></i>Traits</h1>
+                    <p>You can define traits in YObject:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">trait MyTrait {
+    fn func(self) -> int
+    fn func2(self) -> float
+    { 
+       // you don't need to write code of this function
+       // but if you do that, it will be default implementation
+    }
+}
+                        </code></pre>
+                    </div>
+
+                    <p>You can implement traits for structs:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">impl MyTrait for MyStruct {
+    fn func(self) -> int {
+        return self.intProperty
+    }                        
+}
+
+
+myObj = MyStruct
+
+myObjButTrait = (myObj)MyTrait // casting will be shown soon
+myObjButTrait.func() // return myObj intProperty
+</code></pre>
+                    </div>
+
+                </section>
+
+
+                <section id="casts" class="doc-section">
+                    <h1><i class="fas fa-cube"></i>Casts</h1>
+                    <p>You can cast variables in YObject:</p>
+                    
+                    <div style="margin-bottom: 20rem;" class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">integer = 1
+// you can cast like this:
+floatNumber = (integer)float
+
+// or this:
+floatNumber = 1float
+
+// [number][type] or (variable)[type]
+                        </code></pre>
+                    </div>
+
+
+                </section>
+
+                <section id="libraries" class="doc-section">
+                    <h1><i class="fas fa-puzzle-piece"></i>Libraries</h1>
+                    <p>You can import other files in YObject:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">import "root/filename.y" as libraryName
+
+libraryName.function() // some function from this file
+                        </code></pre>
+                    </div>
+
+                    <p>Also you can extract all from this file:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">extract import "root/filename.y"
+
+function() // some function from this file,
+// you can use it without calling name of this library
+                        </code></pre>
+                    </div>
+
+                </section>
 
                 <section id="hello-world" class="doc-section">
                     <h1><i class="fas fa-code"></i> Первая программа на Rust</h1>
