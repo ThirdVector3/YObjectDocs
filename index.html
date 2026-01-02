@@ -4,39 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YObject Docs</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <button class="menu-toggle" id="menuToggle">
     <i class="fas fa-bars"></i>
 </button>
     <div class="container">
-        <!-- Боковая панель навигации -->
         <nav class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
-                    <!--<div class="logo-icon">🦀</div>-->
                     <h1>YObject Docs</h1>
                 </div>
             </div>
 
-            <!--
-            <div class="search-box">
-                <input type="text" placeholder="Поиск по документации...">
-                <i class="fas fa-search"></i>
-            </div>
-            -->
-            
             <ul class="nav-menu">
                 <li class="nav-section">
                     <span class="section-title">Quick start</span>
                     <ul>
                         <li><a href="#getting-started" class="active"><i class="fas fa-rocket"></i>Getting started</a></li>
                         <li><a href="#installation"><i class="fas fa-download"></i>Installation</a></li>
-                        <!--<li><a href="#hello-world"><i class="fas fa-code"></i> Hello World</a></li>-->
                     </ul>
                 </li>
                 
@@ -58,57 +49,41 @@
                         <li><a href="#implementations"><i class="fas fa-cube"></i>Implementations</a></li>
                         <li><a href="#casts"><i class="fas fa-cube"></i>Casts</a></li>
                         <li><a href="#libraries"><i class="fas fa-tasks"></i>Libraries</a></li>
-                        <!--
-                        <li><a href="#generics"><i class="fas fa-code-branch"></i> Обобщения</a></li>
-                        <li><a href="#concurrency"><i class="fas fa-tasks"></i> Многопоточность</a></li>
-                        <li><a href="#error-handling"><i class="fas fa-exclamation-triangle"></i> Обработка ошибок</a></li>
-                        -->
                     </ul>
                 </li>
-                
-                <!--
-                <li class="nav-section">
-                    <span class="section-title">Other</span>
-                    <ul>
-                        <li><a href="#downloads"><i class="fas fa-file-download"></i> Скачать материалы</a></li>
-                        <li><a href="#books"><i class="fas fa-book"></i> Книги</a></li>
-                        <li><a href="#community"><i class="fas fa-users"></i> Сообщество</a></li>
-                    </ul>
-                </li>
-                -->
             </ul>
             
             <div class="sidebar-footer">
-                <div class="version">Version: 0.0.1 alpha</div>
-                <!--<a href="https://www.rust-lang.org" target="_blank" class="official-link">
-                    <i class="fas fa-external-link-alt"></i> Официальный сайт
-                </a>-->
+                <div class="version">Engine version: 0.0.1 alpha</div>
             </div>
         </nav>
 
-        <!-- Основное содержимое -->
         <main class="content">
             <header class="content-header">
-                <h2 class="page-title" id="pageTitle">Документация Rust</h2>
+                <h2 class="page-title" id="pageTitle"></h2>
                 <div class="breadcrumb">
                     <a href="#getting-started">Main</a> / <span id="breadcrumbText">Getting Started</span>
                 </div>
             </header>
 
             <div class="content-wrapper">
-                <!-- Секция: Начало работы -->
                 <section id="getting-started" class="doc-section">
                     <h1><i class="fas fa-rocket"></i>Getting Started</h1>
-                    <p class="lead">Rust — это язык системного программирования, ориентированный на безопасность, скорость и параллельное выполнение кода.</p>
+                    <p class="lead">YObject is an engine that extends Geometry Dash's creation capabilities. It allows you to write custom code that runs alongside your levels, creating complex behaviors, and expanded functionality beyond traditional triggers.</p>
                     
                     <div class="info-box">
                         <div class="info-box-header">
                             <i class="fas fa-lightbulb"></i>
-                            <h3>Почему Rust?</h3>
+                            <h3>Why YObject?</h3>
                         </div>
-                        <p>Rust обеспечивает безопасность памяти без сборщика мусора, гарантирует безопасность потоков и предлагает отличные инструменты для разработки.</p>
+                        <p>Beyond Triggers: Write actual code instead of relying solely on trigger combinations.</p>
+                        <p>Object-Oriented: Create reusable object structs and traits with inheritance and encapsulation(will be soon).</p>
+                        <p>Geode Integration: Seamlessly works with the Geode mod loader ecosystem.</p>
                     </div>
-                    
+
+                    <p style="margin-bottom: 20rem;">More info soon...</p>
+
+                    <!--
                     <h2>Основные особенности</h2>
                     <div class="features-grid">
                         <div class="feature-card">
@@ -127,9 +102,9 @@
                             <p>Сопоставимая с C/C++ производительность с нулевой стоимостью абстракций.</p>
                         </div>
                     </div>
+                    -->
                 </section>
 
-                <!-- Секция: Установка -->
                 <section id="installation" class="doc-section">
                     <h1><i class="fas fa-download"></i>Installation</h1>
                     <p>In this section, you can install YObject.</p>
@@ -196,39 +171,125 @@
                             <span>Path</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></pre>
+                        <pre><code class="language-html">C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></pre>
                     </div>
                     <p style="margin-bottom: 20rem;">That's all. You can open Geometry Dash and mod will be there</p>
                 </section>
 
-                <section id="installation1" class="doc-section">
-                    <h1><i class="fas fa-download"></i>Installation</h1>
-                    <p>Установить Rust можно с помощью <code>rustup</code> — утилиты для управления версиями Rust.</p>
+                <section id="variables" class="doc-section">
+                    <h1><i class="fas fa-download"></i>Variables and Values</h1>
+                    <p>Since you can't really print Hello, world! to the console using Geometry Dash triggers, we're going to get straight into the main features of YObject, the first of which being variables.</p>
                     
-                    <h2>Установка на Linux/macOS</h2>
+                    <h2>In YObject, variables are defined like this:</h2>
                     <div class="code-block">
                         <div class="code-header">
-                            <span>Терминал</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre>
+                        <pre><code>// [variable name] = [value]
+a = 10
+b = 60
+c = a + b
+
+// or
+
+// const [variable name] = [value] (to make them constant)
+const d = 10
+const e = 60
+const f = d + e</code></pre>
                     </div>
-                    
-                    <h2>Установка на Windows</h2>
-                    <p>Скачайте и запустите <a href="https://win.rustup.rs/" target="_blank">rustup-init.exe</a> с официального сайта.</p>
-                    
-                    <h2>Проверка установки</h2>
+
+
+                    <h2>YObject Values</h2>
+                    <p>So, what kind of stuff can you put in your variables? Well, a lot of different things. Some value types are ones you might be familiar with from other languages:</p>
                     <div class="code-block">
                         <div class="code-header">
-                            <span>Терминал</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>rustc --version
-cargo --version</code></pre>
+                        <pre><code>num = 10
+
+text = "Hello, I'm a string!"
+
+array = [1, 2, 3]
+
+boolean = true
+</code></pre>
+                    </div>
+
+                    <p>These values can be used as you would in any other programming language. Here are some examples:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>num = -(1000 * 1000) / 10 // -100000
+
+name = "YaY"
+text = "Hello, my name is " + name + "!"
+
+array = [1, 2, 3]
+my_number = array[2] // 3
+
+array += [4] // after this, the array will now be [1, 2, 3, 4]
+
+boolean = true
+boolean2 = !boolean // false</code></pre>
+                    </div>
+
+                    <h2>IDs</h2>
+                    <p>In YObject, there are also values that that are useful specifically when making Geometry dash levels:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-js">groupID = 10g
+colorID = 10c
+itemID  = 10i
+timerID  = 10t
+blockID = 10b
+
+// And get next free id:
+
+groupID = ?g
+colorID = ?c
+itemID  = ?i
+timerID  = ?t
+blockID = ?b</code></pre>
                     </div>
                 </section>
 
-                <!-- Секция: Hello World -->
+
+                <section id="basic-triggers" class="doc-section">
+                    <h1><i class="fas fa-download"></i>Basic Triggers</h1>
+                    <p>As you probably know, to move objects in Geometry Dash, you move the group the objects are in. If you wanted to, say, move group 5 ten units on the x-axis in 0.5 seconds, you would add a move trigger with those settings. In YObject we do it like this:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">// group.move(x, y, [duration], [easing type] = 0)
+5g.move(10, 0, 0.5)</code></pre>
+                    </div>
+
+                    <p>You can add delay to your triggers using wait()</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-c">wait(1.5)
+1g.move(10, 0, 1)
+wait(1)
+2g.move(20, 0, 1)
+                        </code></pre>
+                    </div>
+
+                </section>
+
+
                 <section id="hello-world" class="doc-section">
                     <h1><i class="fas fa-code"></i> Первая программа на Rust</h1>
                     
@@ -272,7 +333,6 @@ Hello, world!</pre>
                     </div>
                 </section>
 
-                <!-- Секция: Владение -->
                 <section id="ownership" class="doc-section">
                     <h1><i class="fas fa-key"></i> Система владения в Rust</h1>
                     <p>Система владения — одна из ключевых особенностей Rust, обеспечивающая безопасность памяти.</p>
@@ -300,7 +360,6 @@ Hello, world!</pre>
                     </div>
                 </section>
 
-                <!-- Секция: Скачать материалы -->
             </div>
 
             <footer class="content-footer">
@@ -322,11 +381,13 @@ Hello, world!</pre>
         </main>
     </div>
 
-    <!-- Кнопка для быстрой прокрутки наверх -->
     <button id="scrollTop" class="scroll-top-btn">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="script.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
 </body>
 </html>
