@@ -119,59 +119,6 @@
                     <a href="downloads/mod.txt" download="yaymsc.yobject.geode" class="download-btn">
                      <i class="fas fa-download"></i>Download
                     </a>
-                    <!--
-                    <div class="downloads-grid">
-
-                        <div class="download-card">
-                            <div class="download-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="download-info">
-                                <h3>Шпаргалка по Rust</h3>
-                                <p>PDF файл с основными концепциями и синтаксисом Rust</p>
-                                <p class="file-size">Размер: 2.1 MB</p>
-                            </div>
-                            <a href="downloads/rust-cheatsheet.pdf" download="Rust_Шпаргалка.pdf" class="download-btn">
-                                <i class="fas fa-download"></i> Скачать
-                            </a>
-                        </div>
-                        
-                        <div class="download-card">
-                            <div class="download-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="download-info">
-                                <h3>Примеры кода</h3>
-                                <p>ZIP архив с примерами программ на Rust для начинающих</p>
-                                <p class="file-size">Размер: 1.5 MB</p>
-                            </div>
-                            <a href="#" class="download-btn disabled" onclick="showComingSoon()">
-                                <i class="fas fa-download"></i> Скоро
-                            </a>
-                        </div>
-                        
-                        <div class="download-card">
-                            <div class="download-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <div class="download-info">
-                                <h3>Книга "The Rust Book"</h3>
-                                <p>Официальное руководство по Rust (английская версия)</p>
-                                <p class="file-size">Размер: 3.8 MB</p>
-                            </div>
-                            <a href="#" class="download-btn disabled" onclick="showComingSoon()">
-                                <i class="fas fa-download"></i> Скоро
-                            </a>
-                        </div>
-                        
-                    </div>
-                    -->
-                    <!--
-                    <div class="notice">
-                        <i class="fas fa-info-circle"></i>
-                        <p>Для работы ссылок на скачивание, создайте папку <code>downloads</code> в вашем репозитории и добавьте туда файлы. Первая ссылка уже готова к использованию.</p>
-                    </div>
-                    -->
                     <p>Then you need to put this mod in Geode mods folder. This is example path to this folder</p>
                     <div class="code-block">
                         <div class="code-header">
@@ -581,93 +528,10 @@ $print(10)
 
                 </section>
 
-                <section id="hello-world" class="doc-section">
-                    <h1><i class="fas fa-code"></i> Первая программа на Rust</h1>
-                    
-                    <h2>Создание проекта</h2>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Терминал</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        </div>
-                        <pre><code>cargo new hello_world
-cd hello_world</code></pre>
-                    </div>
-                    
-                    <h2>Код программы</h2>
-                    <p>Файл <code>src/main.rs</code>:</p>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Rust</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        </div>
-                        <pre><code>fn main() {
-    println!("Hello, world!");
-}</code></pre>
-                    </div>
-                    
-                    <h2>Запуск программы</h2>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Терминал</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        </div>
-                        <pre><code>cargo run</code></pre>
-                    </div>
-                    
-                    <div class="output-block">
-                        <div class="output-header">Вывод:</div>
-                        <pre>   Compiling hello_world v0.1.0
-    Finished dev [unoptimized + debuginfo] target(s) in 0.45s
-     Running `target/debug/hello_world`
-Hello, world!</pre>
-                    </div>
-                </section>
-
-                <section id="ownership" class="doc-section">
-                    <h1><i class="fas fa-key"></i> Система владения в Rust</h1>
-                    <p>Система владения — одна из ключевых особенностей Rust, обеспечивающая безопасность памяти.</p>
-                    
-                    <h2>Три правила владения</h2>
-                    <ol class="rules-list">
-                        <li>У каждого значения в Rust есть переменная, которая называется его <strong>владельцем</strong>.</li>
-                        <li>У значения может быть только <strong>один владелец</strong> в каждый момент времени.</li>
-                        <li>Когда владелец выходит из области видимости, значение <strong>удаляется</strong>.</li>
-                    </ol>
-                    
-                    <h2>Пример</h2>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Rust</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        </div>
-                        <pre><code>fn main() {
-    let s1 = String::from("hello");
-    let s2 = s1; // Владение перемещается от s1 к s2
-    
-    // println!("{}", s1); // Ошибка! s1 больше не владеет значением
-    println!("{}", s2); // OK
-}</code></pre>
-                    </div>
-                </section>
 
             </div>
 
             <footer class="content-footer">
-                <!--
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h4>YObject документация</h4>
-                        <p>Документация YObject</p>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Полезные ссылки</h4>
-                        <ul>
-                            <li><a href="https://doc.rust-lang.org/std/" target="_blank">Стандартная библиотека</a></li>
-                        </ul>
-                    </div>
-                </div>
-                -->
             </footer>
         </main>
     </div>
