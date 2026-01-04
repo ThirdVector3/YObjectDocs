@@ -395,6 +395,7 @@ body {
 }
 
 .scroll-top-btn {
+    -webkit-tap-highlight-color: transparent;
     user-select: none;
     position: fixed;
     bottom: 2rem;
