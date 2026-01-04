@@ -44,7 +44,7 @@
                 <li class="nav-section">
                     <span class="section-title">Advanced</span>
                     <ul>
-                        <li><a href="#structs"><i class="fas fa-th"></i>Structs</a></li>
+                        <li><a href="#structs"><i class="fas fa-th"></i>Structures</a></li>
                         <li><a href="#implementations"><i class="fas fa-cube"></i>Implementations</a></li>
                         <li><a href="#traits"><i class="fas fa-puzzle-piece"></i>Traits</a></li>
                         <li><a href="#casts"><i class="fas fa-cube"></i>Casts</a></li>
@@ -177,7 +177,7 @@ boolean = true
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>num = -(1000 * 1000) / 10 // -100000
+                        <pre><code class="language-rust">num = -(1000 * 1000) / 10 // -100000
 
 name = "YaY"
 text = "Hello, my name is " + name + "!"
@@ -198,7 +198,7 @@ boolean2 = !boolean // false</code></pre>
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-js">groupID = 10g
+                        <pre><code class="language-rust">groupID = 10g
 colorID = 10c
 itemID  = 10i
 timerID  = 10t
@@ -224,7 +224,7 @@ blockID = ?b</code></pre>
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">// group.move(x, y, [duration], [easing type] = 0)
+                        <pre><code class="language-rust">// group.move(x, y, [duration], [easing type] = 0)
 5g.move(10, 0, 0.5)</code></pre>
                     </div>
 
@@ -234,7 +234,7 @@ blockID = ?b</code></pre>
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">wait(1.5)
+                        <pre><code class="language-rust">wait(1.5)
 1g.move(10, 0, 1)
 wait(1)
 2g.move(20, 0, 1)
@@ -298,7 +298,7 @@ if condition {
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">// define a function:
+                        <pre><code class="language-rust">// define a function:
 fn function(a: int, b: float = 10.5) {
     1g.move(a, 0, b)
 }
@@ -323,6 +323,13 @@ func(10,15)!!
 fn function2(a: int, b: float = 10.5) -> float {
     return a + b
 }
+
+
+// and you can overload functions:
+
+fn function2(a: int, b: float, c: int) -> float {
+    return a + b - c
+}
                         </code></pre>
                     </div>
 
@@ -332,7 +339,7 @@ fn function2(a: int, b: float = 10.5) -> float {
 
 
                 <section id="structs" class="doc-section">
-                    <h1><i class="fas fa-th"></i>Structs</h1>
+                    <h1><i class="fas fa-th"></i>Structures</h1>
                     <p>You can define structures in YObject:</p>
                     
                     <div class="code-block">
@@ -340,7 +347,7 @@ fn function2(a: int, b: float = 10.5) -> float {
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>struct MyStruct {
+                        <pre><code class="language-rust">struct MyStruct {
     intProperty: int
     floatProperty: float
 }
@@ -353,7 +360,7 @@ fn function2(a: int, b: float = 10.5) -> float {
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">myObject = MyStruct
+                        <pre><code class="language-rust">myObject = MyStruct
 
 myObject.intProperty = 10
 myObject.floatProperty = 20.3
@@ -371,7 +378,7 @@ myObject.floatProperty = 20.3
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>impl MyStruct {
+                        <pre><code class="language-rust">impl MyStruct {
     fn staticFunc(a: int) -> int {
         return a + 2
     }
@@ -399,7 +406,7 @@ a.nonStaticFunc(10) // return 15 because 5 + 10 = 15
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">trait MyTrait {
+                        <pre><code class="language-rust">trait MyTrait {
     fn func(self) -> int
     fn func2(self) -> float
     { 
@@ -416,7 +423,7 @@ a.nonStaticFunc(10) // return 15 because 5 + 10 = 15
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">impl MyTrait for MyStruct {
+                        <pre><code class="language-rust">impl MyTrait for MyStruct {
     fn func(self) -> int {
         return self.intProperty
     }                        
@@ -442,7 +449,7 @@ myObjButTrait.func() // return myObj intProperty
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">integer = 1
+                        <pre><code class="language-rust">integer = 1
 // you can cast like this:
 floatNumber = (integer)float
 
@@ -465,7 +472,7 @@ floatNumber = 1float
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">import "root/filename.y" as libraryName
+                        <pre><code class="language-rust">import "root/filename.y" as libraryName
 
 libraryName.function() // some function from this file
                         </code></pre>
@@ -477,7 +484,7 @@ libraryName.function() // some function from this file
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">extract import "root/filename.y"
+                        <pre><code class="language-rust">extract import "root/filename.y"
 
 function() // some function from this file,
 // you can use it without calling name of this library
@@ -495,7 +502,7 @@ function() // some function from this file,
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">
+                        <pre><code class="language-rust">
 // $print(value) prints value string form to console  
 $print(10)  
                         </code></pre>
@@ -518,7 +525,7 @@ $print(10)
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">
+                        <pre><code class="language-rust">
 // group:
 
 // group.move(x: int, y: int, time: float, easing: int) moves block

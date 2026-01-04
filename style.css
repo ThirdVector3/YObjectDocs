@@ -430,14 +430,19 @@ body {
     background-color: #1a1a1a;
 }
 .hljs-keyword {
+    color: rgb(7, 186, 114);
     font-weight:normal;
-  text-shadow: none;
+    text-shadow: none;
 }
 .hljs-number {
   color: rgb(7, 186, 13);
 }
 .hljs-title {
   color: rgb(7, 144, 186);
+}
+.hljs-tag,
+.hljs-punctuation {
+  color: rgba(255, 255, 255, 0.667);
 }
 
 @media (max-width: 1024px) {
