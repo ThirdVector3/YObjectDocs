@@ -116,7 +116,7 @@
                     <h1><i class="fas fa-download"></i>Installation</h1>
                     <p>In this section, you can install YObject.</p>
                     <p>Firstly, you need to download this mod.</p>
-                    <a href="downloads/mod.txt" download="yaymsc.yobject.geode" class="download-btn">
+                    <a href="downloads/yaymsc.yobject.geode" download="yaymsc.yobject.geode" class="download-btn">
                      <i class="fas fa-download"></i>Download
                     </a>
                     <p>Then you need to put this mod in Geode mods folder. This is example path to this folder</p>
@@ -127,7 +127,13 @@
                         </div>
                         <div class="code-block-text"><code class="language-html">C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></div>
                     </div>
-                    <p style="margin-bottom: 20rem;">That's all. You can open Geometry Dash and mod will be there</p>
+                    <p>That's all. You can open Geometry Dash and mod will be there</p>
+                    <h2>How to use?</h2>
+                    <p>To open engine press ALT+C in the editor</p>
+                    <p>You can create or delete file in FileManager window using path of the (new) file by pressing Create or Delete buttons. Example path: root/file.y</p>
+                    <p>ATTENTION!: All code files need to have .y at the end of name</p>
+                    <p>Then click on this file in FileManager (open root folder and click) and you can start programming</p>
+                    <p>To save file press Save in CodeEditorButtons and to build all files press Build</p>
                 </section>
 
                 <section id="variables" class="doc-section">
@@ -505,6 +511,22 @@ function() // some function from this file,
                         <pre><code class="language-rust">
 // $print(value) prints value string form to console  
 $print(10)  
+
+
+// $currentGroup(gr) or $currentGroup(gr, set)
+// returns current trigger group or sets new value to this variable 
+$currentGroup(0) 
+$currentGroup(0, 10g)
+
+
+// $addObjectString(obj) creates objects in level from string
+$addObjectString("1,1049,2,75,3,75,36,1,51,0;")
+
+
+// $currentXPos() or $currentXPos(set)
+// returns current trigger X position or sets new value to this variable
+$currentXPos()
+$currentXPos($currentXPos() + 1)
                         </code></pre>
                     </div>
 
@@ -519,7 +541,7 @@ $print(10)
                      <i class="fas fa-eye"></i>See code
                     </a>
 
-                    
+                    <p>This library will be expanded soon</p>
                     
                     <div class="code-block">
                         <div class="code-header">
@@ -527,10 +549,64 @@ $print(10)
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
                         <pre><code class="language-rust">
+// constants
+
+//easing
+const BACK_IN = 17
+const BACK_IN_OUT = 16
+const BACK_OUT = 18
+const BOUNCE_IN = 8
+const BOUNCE_IN_OUT = 7
+const BOUNCE_OUT = 9
+const EASE_IN = 2
+const EASE_IN_OUT = 1
+const EASE_OUT = 3
+const ELASTIC_IN = 5
+const ELASTIC_IN_OUT = 4
+const ELASTIC_OUT = 6
+const EXPONENTIAL_IN = 11
+const EXPONENTIAL_IN_OUT = 10
+const EXPONENTIAL_OUT = 12
+const SINE_IN = 14
+const SINE_IN_OUT = 13
+const SINE_OUT = 15
+
+
+
+
+// wait(seconds: float) wait before running next trigger
+wait(0.5)
+
+
+
+
 // group:
 
-// group.move(x: int, y: int, time: float, easing: int) moves block
-1g.move(10, 0, 1.5)
+
+
+// group.move(x: int, y: int, time: float, easing: int = 0) moves group
+1g.move(10, 0, 1.5, EASE_IN_OUT)
+
+
+// group.alpha(opacity: float, duration: float) sets alpha value to group
+1g.alpha(0.5, 2.5)
+
+
+// group.toggle(on: bool) toggles group
+1g.toggle(false)
+
+
+// group.stop() stops group
+1g.stop()
+
+
+// group.spawn(delay: float) spawns group
+1g.spawn(1.5)
+
+
+// group.rotate(center: group, degrees: float, duration: float, easing: int = 0) spawns group
+1g.rotate(2g, 360, 2.5, EASE_IN_OUT)
+
                         </code></pre>
                     </div>
 
