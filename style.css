@@ -197,7 +197,7 @@ body {
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: var(--box-shadow);
-    max-width: 60%;
+    max-width: calc( 100vw - 100px);
 }
 
 .doc-section h1 {
