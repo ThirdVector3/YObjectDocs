@@ -197,6 +197,7 @@ body {
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: var(--box-shadow);
+    max-width: 60%;
 }
 
 .doc-section h1 {
@@ -236,13 +237,13 @@ body {
 
 .code-block-text {
     margin: 10px 10px;
-    
 }
 .code-block {
     background-color: var(--code-bg);
     border-radius: var(--border-radius);
     margin: 1rem 0;
     overflow: hidden;
+    max-width: 100%;
 }
 
 .code-header {
@@ -276,6 +277,14 @@ body {
     overflow-x: auto;
     margin: 0;
 }
+
+.code-block code::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
 
 .code-block code {
     font-family: 'JetBrains Mono', monospace;
@@ -465,6 +474,7 @@ body {
     .sidebar.active + .content {
         margin-left: 0;
     }
+
 }
 
 @media (max-width: 768px) {
@@ -487,7 +497,11 @@ body {
     .page-title {
         font-size: 1.5rem;
     }
+
+
+    /*
     .code-block code {
     font-size: 8px;
     }
+    */
 }
