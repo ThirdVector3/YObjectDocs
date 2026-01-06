@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <button class="menu-toggle" id="menuToggle">
-    <i class="fas fa-bars"></i>
-</button>
+        <i class="fas fa-bars"></i>
+    </button>
     <div class="container">
         <nav class="sidebar" id="sidebar">
             <div class="sidebar-header">
@@ -125,7 +125,7 @@
                             <span>Path</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <div class="code-block-text"><code class="language-html">C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></div>
+                        <pre><code class="language-html">C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods</code></pre>
                     </div>
                     <p>That's all. You can open Geometry Dash and mod will be there</p>
                     <h2>How to use?</h2>
@@ -216,7 +216,19 @@ groupID = ?g
 colorID = ?c
 itemID  = ?i
 timerID  = ?t
-blockID = ?b</code></pre>
+blockID = ?b
+
+
+
+// you can interact with items and timers like this:
+a = 10i
+a += 1
+a = 0
+
+b = 10t
+b -= 2.5
+b = 0.5
+</code></pre>
                     </div>
                 </section>
 
@@ -600,7 +612,7 @@ wait(0.5)
 1g.stop()
 
 
-// group.spawn(delay: float) spawns group
+// group.spawn(delay: float = 0) spawns group
 1g.spawn(1.5)
 
 
