@@ -19,34 +19,34 @@ const SINE_OUT = 15
 
 
 impl group {
-    fn alpha(self, opacity: float, duration: float) {
-        $addObjectString("1,1007,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",10," + duration + ",35," + opacity +";")
-        $currentXPos($currentXPos()+1)
-    }
-    fn move(self, x: int, y: int, duration: float, easing: int = 0) {
-        $addObjectString("1,901,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",28," + (x*3) + ",29," + (y*3) + ",10," + duration + ",30,"+easing+",85,2;")
-        $currentXPos($currentXPos()+1)
-    }
-    fn toggle(self, on: bool) {
-        $addObjectString("1,1049,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",56,"+(on)int+";")
-        $currentXPos($currentXPos()+1)
-    }
-    fn stop(self) {
-        $addObjectString("1,1616,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +";")
-        $currentXPos($currentXPos()+1)
-    }
-    fn spawn(self, delay: float) {
-        $addObjectString("1,1268,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",63,"+delay+";")
-        $currentXPos($currentXPos()+1)
-    }
-    fn rotate(self, center: group, degrees: float, duration: float, easing: int = 0) {
-        $addObjectString("1,1346,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",71," + (center)int +",10," + duration + ",30,"+easing+",85,2,68,"+degrees+";")
-        $currentXPos($currentXPos()+1)
-    }
+	fn alpha(self, opacity: float, duration: float) {
+		$addObjectString("1,1007,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",10," + duration + ",35," + opacity +";")
+		$currentXPos($currentXPos()+1)
+	}
+	fn move(self, x: int, y: int, duration: float, easing: int = 0) {
+		$addObjectString("1,901,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",28," + (x*3) + ",29," + (y*3) + ",10," + duration + ",30,"+easing+",85,2;")
+		$currentXPos($currentXPos()+1)
+	}
+	fn toggle(self, on: bool) {
+		$addObjectString("1,1049,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",56,"+(on)int+";")
+		$currentXPos($currentXPos()+1)
+	}
+	fn stop(self) {
+		$addObjectString("1,1616,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +";")
+		$currentXPos($currentXPos()+1)
+	}
+	fn spawn(self, delay: float = 0) {
+		$addObjectString("1,1268,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",63,"+delay+";")
+		$currentXPos($currentXPos()+1)
+	}
+	fn rotate(self, center: group, degrees: float, duration: float, easing: int = 0) {
+		$addObjectString("1,1346,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51," + (self)int +",71," + (center)int +",10," + duration + ",30,"+easing+",85,2,68,"+degrees+";")
+		$currentXPos($currentXPos()+1)
+	}
 }
 
 fn wait(seconds: float) {
-    newGroup = ?g
-    $addObjectString("1,1268,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51,"+newGroup+",63,"+seconds+";")
-    $currentGroup(0,newGroup)
+	newGroup = ?g
+	$addObjectString("1,1268,2," + $currentXPos() +  ",3,29000,57,9999." + $currentGroup(0) + ",62,1,87,1,36,1,51,"+newGroup+",63,"+seconds+";")
+	$currentGroup(0,newGroup)
 }
