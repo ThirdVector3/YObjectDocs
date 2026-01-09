@@ -20,9 +20,37 @@ const SINE_IN = 14
 const SINE_IN_OUT = 13
 const SINE_OUT = 15
 
+enum Easing {
+	None = 0
+	BackIn = 17
+	BackInOut = 16
+	BackOut = 18
+	BounceIn = 8
+	BounceInOut = 7
+	BounceOut = 9
+	EaseIn = 2
+	EaseInOut = 1
+	EaseOut = 3
+	ElasticIn = 5
+	ElasticInOut = 4
+	ElasticOut = 6
+	ExponentialIn = 11
+	ExponentialInOut = 10
+	ExponentialOut = 12
+	SineIn = 14
+	SineInOut = 13
+	SineOut = 15
+}
+
+enum TriggerPropertyValueType {
+	Int
+	Bool
+	Float
+	IntArray
+}
 
 struct TriggerPropertyValue {
-	type: string
+	type: TriggerPropertyValueType
 	intNumber: int
 	boolean: bool
 	floatNumber: float
@@ -31,25 +59,25 @@ struct TriggerPropertyValue {
 
 fn TriggerProperty(value: int) -> TriggerPropertyValue {
 	ret = TriggerPropertyValue
-	ret.type = "int"
+	ret.type = TriggerPropertyValueType.Int
 	ret.intNumber = value
 	return ret
 }
 fn TriggerProperty(value: bool) -> TriggerPropertyValue {
 	ret = TriggerPropertyValue
-	ret.type = "bool"
+	ret.type = TriggerPropertyValueType.Bool
 	ret.boolean = value
 	return ret
 }
 fn TriggerProperty(value: float) -> TriggerPropertyValue {
 	ret = TriggerPropertyValue
-	ret.type = "float"
+	ret.type = TriggerPropertyValueType.Float
 	ret.floatNumber = value
 	return ret
 }
 fn TriggerProperty(value: [int]) -> TriggerPropertyValue {
 	ret = TriggerPropertyValue
-	ret.type = "intArray"
+	ret.type = TriggerPropertyValueType.IntArray
 	ret.intArray = value
 	return ret
 }
@@ -77,21 +105,44 @@ fn AddTrigger(props: {int: TriggerPropertyValue}) {
 	
 	for i in defaultProps {
 		ret += (i)string + ","
-		if defaultProps[i].type == "int" {
+		
+		ret += match defaultProps[i].type {
+			== TriggerPropertyValueType.Int {
+				defaultProps[i].intNumber + ","
+			}
+			== TriggerPropertyValueType.Bool {
+				(defaultProps[i].boolean)int + ","
+			}
+			== TriggerPropertyValueType.Float {
+				defaultProps[i].floatNumber + ","
+			}
+			== TriggerPropertyValueType.IntArray {
+				tmp = ""
+				for elem in defaultProps[i].intArray {
+					tmp += elem + "."
+				}
+				tmp + ","
+			}
+		}
+		
+		
+		/*
+		if defaultProps[i].type == TriggerPropertyValueType.Int {
 			ret += defaultProps[i].intNumber + ","
 		}
-		if defaultProps[i].type == "bool" {
+		if defaultProps[i].type == TriggerPropertyValueType.Bool {
 			ret += (defaultProps[i].boolean)int + ","
 		}
-		if defaultProps[i].type == "float" {
+		if defaultProps[i].type == TriggerPropertyValueType.Float {
 			ret += defaultProps[i].floatNumber + ","
 		}
-		if defaultProps[i].type == "intArray" {
+		if defaultProps[i].type == TriggerPropertyValueType.IntArray {
 			for elem in defaultProps[i].intArray {
 				ret += elem + "."
 			}
 			ret += ","
 		}
+		*/
 	}
 	ret += ";"
 	//$print(ret + "\n")
@@ -117,14 +168,14 @@ impl group {
 			objProps.DURATION: TriggerProperty(duration),
 		})
 	}
-	fn move(self, x: int, y: int, duration: float, easing: int = 0) {
+	fn move(self, x: int, y: int, duration: float, easing: Easing = Easing.None) {
 		AddTrigger({
 			objProps.OBJ_ID: TriggerProperty(901),
 			objProps.TARGET: TriggerProperty(self),
 			objProps.MOVE_X: TriggerProperty(x * 3),
 			objProps.MOVE_Y: TriggerProperty(y * 3),
 			objProps.DURATION: TriggerProperty(duration),
-			objProps.EASING: TriggerProperty(easing),
+			objProps.EASING: TriggerProperty((easing)int),
 		})
 	}
 	fn toggle(self, on: bool) {
@@ -147,13 +198,13 @@ impl group {
 			objProps.SPAWN_DURATION: TriggerProperty(delay),
 		})
 	}
-	fn rotate(self, center: group, degrees: float, duration: float, easing: int = 0) {
+	fn rotate(self, center: group, degrees: float, duration: float, easing: Easing = Easing.None) {
 		AddTrigger({
 			objProps.OBJ_ID: TriggerProperty(1346),
 			objProps.TARGET: TriggerProperty(self),
 			objProps.ROTATE_DEGREES: TriggerProperty(degrees),
 			objProps.DURATION: TriggerProperty(duration),
-			objProps.EASING: TriggerProperty(easing),
+			objProps.EASING: TriggerProperty((easing)int),
 			objProps.CENTER: TriggerProperty(center),
 		})
 	}
