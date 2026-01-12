@@ -242,7 +242,7 @@ b = 0.5
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-rust">// group.move(x, y, [duration], [easing type] = 0)
+                        <pre><code class="language-rust">// group.move(x, y, duration, [easing type] = 0)
 5g.move(10, 0, 0.5)</code></pre>
                     </div>
 
@@ -539,6 +539,163 @@ $addObjectString("1,1049,2,75,3,75,36,1,51,0;")
 // returns current trigger X position or sets new value to this variable
 $currentXPos()
 $currentXPos($currentXPos() + 1)
+
+
+// $abs(value)
+// Calculates the absolute value of a number
+$abs(-10)
+
+
+// $acos(value)
+// Calculates the arccos of a number
+$acos(-1)
+
+
+// $acosh(value)
+// Calculates the arccosh of a number
+$acosh(num)
+
+
+// $asin(value)
+// Calculates the arcsin of a number
+$asin(1)
+
+
+// $asin(value)
+// Calculates the arcsinh of a number
+$asinh(num)
+
+
+// $atan(value)
+// Calculates the arctan of a number
+$atan(1)
+
+
+// $atan2(a, b)
+// Calculates the arctan^2 of a number
+$atan2(a, b)
+
+
+// $atanh(value)
+// Calculates the arctanh of a number
+$atanh(num)
+
+
+// $b64decode(value)
+// Returns the input string decoded from base64 encoding (useful for text objects)
+$b64decode("aGVsbG8gdGhlcmU=")
+
+
+// $b64encode(value)
+// Returns the input string encoded with base64 encoding (useful for text objects)
+$b64encode("hello there")
+
+
+// $cbrt(value)
+// Calculates the cube root of a number
+$cbrt(27)
+
+
+// $ceil(value)
+// Calculates the ceil of a number, AKA the number rounded up to the nearest integer
+$ceil(27)
+
+
+// $cos(value)
+// Calculates the cos of an angle in radians
+$cos(3.1415)
+
+
+// $cosh(value)
+// Calculates the cosh of a number
+$cosh(num)
+
+
+// $exp(value)
+// Calculates the e^x of a number
+$exp(x)
+
+
+// $floor(value)
+// Calculates the floor of a number, AKA the number rounded down to the nearest integer
+$floor(1.5)
+
+
+// $fract(value)
+// Gets the fractional part of a number
+$fract(123.456)
+
+
+// $ln(value)
+// Calculates the ln (natural log) of a number
+$ln(num)
+
+
+// $log(value, base)
+// Calculates the log base x of a number
+$log(num, base)
+
+
+// $max(a, b)
+// Calculates the max of two numbers
+$max(1, 2)
+
+
+// $min(a, b)
+// Calculates the min of two numbers
+$min(1, 2)
+
+
+// $random() or $random(array) or $random(floatA, floatB)
+// Generates random numbers, or picks a random element of an array
+$random()
+$random([1, 2, 3, 6])
+$random(1.0, 10.0)
+
+
+// $remove_index(array, index)
+// Removes a specific value from an array
+$remove_index(array, 2)
+
+
+// $round(value)
+// Rounds a number
+$round(1.2)
+
+
+// $sin(value)
+// Calculates the sin of an angle in radians
+$sin(3.1415)
+
+
+// $sinh(value)
+// Calculates the hyperbolic sin of a number
+$sinh(num)
+
+
+// $sqrt(value)
+// Calculates the square root of a number
+$sqrt(num)
+
+
+// $substr(str, start, length)
+// Returns a specified part of the input string
+$substr("hello there", 1, 4)
+
+
+// $tan(value)
+// Calculates the tan of an angle in radians
+$tan(3.1415)
+
+
+// $tanh(value)
+// Calculates the hyperbolic tan of a number
+$tanh(num)
+
+
+// $time()
+// Gets the current system time in seconds
+$time()
                         </code></pre>
                     </div>
 
@@ -561,28 +718,28 @@ $currentXPos($currentXPos() + 1)
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
                         <pre><code class="language-rust">
-// constants
 
-//easing
-const BACK_IN = 17
-const BACK_IN_OUT = 16
-const BACK_OUT = 18
-const BOUNCE_IN = 8
-const BOUNCE_IN_OUT = 7
-const BOUNCE_OUT = 9
-const EASE_IN = 2
-const EASE_IN_OUT = 1
-const EASE_OUT = 3
-const ELASTIC_IN = 5
-const ELASTIC_IN_OUT = 4
-const ELASTIC_OUT = 6
-const EXPONENTIAL_IN = 11
-const EXPONENTIAL_IN_OUT = 10
-const EXPONENTIAL_OUT = 12
-const SINE_IN = 14
-const SINE_IN_OUT = 13
-const SINE_OUT = 15
-
+enum Easing {
+	None = 0
+	BackIn = 17
+	BackInOut = 16
+	BackOut = 18
+	BounceIn = 8
+	BounceInOut = 7
+	BounceOut = 9
+	EaseIn = 2
+	EaseInOut = 1
+	EaseOut = 3
+	ElasticIn = 5
+	ElasticInOut = 4
+	ElasticOut = 6
+	ExponentialIn = 11
+	ExponentialInOut = 10
+	ExponentialOut = 12
+	SineIn = 14
+	SineInOut = 13
+	SineOut = 15
+}
 
 
 
@@ -597,7 +754,7 @@ wait(0.5)
 
 
 // group.move(x: int, y: int, time: float, easing: int = 0) moves group
-1g.move(10, 0, 1.5, EASE_IN_OUT)
+1g.move(10, 0, 1.5, Easing.EaseInOut)
 
 
 // group.alpha(opacity: float, duration: float) sets alpha value to group
@@ -617,7 +774,7 @@ wait(0.5)
 
 
 // group.rotate(center: group, degrees: float, duration: float, easing: int = 0) spawns group
-1g.rotate(2g, 360, 2.5, EASE_IN_OUT)
+1g.rotate(2g, 360, 2.5, Easing.EaseInOut)
 
                         </code></pre>
                     </div>
