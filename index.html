@@ -322,16 +322,17 @@ if condition {
 fn function(a: int, b: float = 10.5) {
     1g.move(a, 0, b)
 }
+fn function(a, b) { // if you don't set type of argument it will be any type
+    // code
+}
 
-// simple call:
+// compile-time call:
 func(10, 15)
 
-// trigger call with remembering group
-// (it will create spawn trigger and spawn this
-// triggers with remembering their group):
+// runtime call:
 func(10, 15)!
 
-// trigger call without remembering group with new group
+// another runtime call, but with compiling code again
 func(10,15)!!
 
 
@@ -820,6 +821,9 @@ enum Easing {
 wait(0.5)
 
 
+// onEvent(events: [int], func: fn (), extraId2: int = 0)
+onEvent([69], fn () { 1g.move(10,0,1) } )
+
 
 
 // group:
@@ -848,6 +852,19 @@ wait(0.5)
 
 // group.rotate(center: group, degrees: float, duration: float, easing: int = 0) spawns group
 1g.rotate(2g, 360, 2.5, Easing.EaseInOut)
+
+
+
+// block
+
+
+
+// block.onCollision(other: block, func: fn (), activateGroup = true)
+1b.onCollision(2b, fn () { 1g.move(0,10,0.1) } )
+
+
+// block.onCollisionExit(other: block, func: fn (), activateGroup = true)
+1b.onCollisionExit(2b, fn () { 1g.move(0,-10,0.1) } )
 
                         </code></pre>
                     </div>
