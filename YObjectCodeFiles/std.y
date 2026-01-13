@@ -159,6 +159,11 @@ AddTrigger({
 })
 */
 
+UPDATE_FUNCTIONS = []
+fn onUpdate(func: fn ()) {
+	UPDATE_FUNCTIONS += [func]
+}
+
 impl group {
 	fn alpha(self, opacity: float, duration: float) {
 		AddTrigger({
@@ -210,6 +215,39 @@ impl group {
 	}
 }
 
+impl block {
+	fn onCollision(self, other: block, func: fn (), activateGroup = true) {
+		tmpGroup = $currentGroup(0)
+		newGroup = ?g
+		AddTrigger({
+			objProps.OBJ_ID: TriggerProperty(1815),
+			objProps.TARGET: TriggerProperty(newGroup),
+			objProps.BLOCK_A: TriggerProperty(self),
+			objProps.BLOCK_B: TriggerProperty(other),
+			objProps.ACTIVATE_GROUP: TriggerProperty(activateGroup),
+			objProps.ACTIVATE_ON_EXIT: TriggerProperty(false),
+		})
+		$currentGroup(0,newGroup)
+		func()
+		$currentGroup(0,tmpGroup)
+	}
+	fn onCollisionExit(self, other: block, func: fn (), activateGroup = true) {
+		tmpGroup = $currentGroup(0)
+		newGroup = ?g
+		AddTrigger({
+			objProps.OBJ_ID: TriggerProperty(1815),
+			objProps.TARGET: TriggerProperty(newGroup),
+			objProps.BLOCK_A: TriggerProperty(self),
+			objProps.BLOCK_B: TriggerProperty(other),
+			objProps.ACTIVATE_GROUP: TriggerProperty(activateGroup),
+			objProps.ACTIVATE_ON_EXIT: TriggerProperty(true),
+		})
+		$currentGroup(0,newGroup)
+		func()
+		$currentGroup(0,tmpGroup)
+	}
+}
+
 fn wait(seconds: float) {
 	newGroup = ?g
 	AddTrigger({
@@ -218,4 +256,18 @@ fn wait(seconds: float) {
 		objProps.SPAWN_DURATION: TriggerProperty(seconds),
 	})
 	$currentGroup(0,newGroup)
+}
+
+fn onEvent(events: [int], func: fn (), extraId2: int = 0) {
+	tmpGroup = $currentGroup(0)
+	newGroup = ?g
+	AddTrigger({
+		objProps.OBJ_ID: TriggerProperty(3604),
+		objProps.TARGET: TriggerProperty(newGroup),
+		objProps.EVENTS: TriggerProperty(events),
+		objProps.EXTRA_ID_2: TriggerProperty(extraId2),
+	})
+	$currentGroup(0,newGroup)
+	func()
+	$currentGroup(0,tmpGroup)
 }

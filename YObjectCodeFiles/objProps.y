@@ -93,3 +93,6 @@ const MAX_SPEED = 105
 const RANDOMIZE_START = 106
 const ANIMATION_SPEED = 107
 const LINKED_GROUP = 108
+const EXTRA_ID = 447
+const EXTRA_ID_2 = 525
+const EVENTS = 430
