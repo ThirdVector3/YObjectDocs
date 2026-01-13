@@ -44,6 +44,8 @@
                 <li class="nav-section">
                     <span class="section-title">Advanced</span>
                     <ul>
+                        <li><a href="#enums"><i class="fas fa-list-ol"></i>Enums</a></li>
+                        <li><a href="#pattern-matching"><i class="fas fa-list-check"></i>Pattern Matching</a></li>
                         <li><a href="#structs"><i class="fas fa-th"></i>Structures</a></li>
                         <li><a href="#implementations"><i class="fas fa-cube"></i>Implementations</a></li>
                         <li><a href="#traits"><i class="fas fa-puzzle-piece"></i>Traits</a></li>
@@ -352,6 +354,72 @@ fn function2(a: int, b: float, c: int) -> float {
                     </div>
 
                     
+
+                </section>
+
+
+                <section id="enums" class="doc-section">
+                    <h1><i class="fas fa-th"></i>Enums</h1>
+                    <p>You can define enums in YObject:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-rust">enum MyEnum {
+    Apple
+    Banana
+}
+// or
+enum MyEnum {
+    Apple = 0
+    Banana = 1
+}
+                        </code></pre>
+                    </div>
+
+                    <p>You can create and interact with enums like this:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-rust">myEnum = MuEnum.Apple
+
+$print(myEnum)
+$print((myEnum)int) // casts will be further
+$print((1)MuEnum) // also cast
+                        </code></pre>
+                    </div>
+
+                </section>
+
+                <section id="pattern-matching" class="doc-section">
+                    <h1><i class="fas fa-th"></i>Pattern Matching</h1>
+                    <p>You can check matching to patterns in YObject:</p>
+                    
+                    <div style="margin-bottom: 20rem;" class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-rust">$print(myEnum is MyEnum) // return true
+$print(myEnum is ==MyEnum.Apple) // return true
+
+//or
+
+match myEnum {
+    ==MyEnum.Apple | ==MyEnum.Banana {
+        // code
+    }
+    else {
+        // code 
+    }
+}
+                        </code></pre>
+                    </div>
+
 
                 </section>
 
