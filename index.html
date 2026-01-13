@@ -836,9 +836,12 @@ enum Easing {
 wait(0.5)
 
 
-// onEvent(events: [int], func: fn (), extraId2: int = 0)
+// onEvent(events: [int], func: fn (), extraId2: int = 0)   event trigger
 onEvent([69], fn () { 1g.move(10,0,1) } )
 
+
+// onUpdate(func: fn ())   this is the engine loop
+onEvent(fn () { $print("loop") } )
 
 
 // group:
