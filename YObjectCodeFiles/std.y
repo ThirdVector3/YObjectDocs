@@ -20,6 +20,9 @@ const SINE_IN = 14
 const SINE_IN_OUT = 13
 const SINE_OUT = 15
 
+const BG = 1000c
+const GROUND = 1001c
+
 enum Easing {
 	None = 0
 	BackIn = 17
@@ -40,6 +43,15 @@ enum Easing {
 	SineIn = 14
 	SineInOut = 13
 	SineOut = 15
+}
+
+enum Events {
+	JumpPush = 69
+	JumpRelease = 70
+	LeftPush = 71
+	LeftRelease = 72
+	RightPush = 73
+	RightRelease = 74
 }
 
 enum TriggerPropertyValueType {
@@ -160,7 +172,7 @@ AddTrigger({
 */
 
 UPDATE_FUNCTIONS = []
-fn onUpdate(func: fn ()) {
+fn onEngineUpdate(func: fn ()) {
 	UPDATE_FUNCTIONS += [func]
 }
 
@@ -213,6 +225,19 @@ impl group {
 			objProps.CENTER: TriggerProperty(center),
 		})
 	}
+	fn pulse(self, red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0) {
+		AddTrigger({
+			objProps.OBJ_ID: TriggerProperty(1006),
+			objProps.TARGET: TriggerProperty(self),
+			objProps.TARGET_TYPE: TriggerProperty(1),
+			objProps.TRIGGER_RED: TriggerProperty(red),
+			objProps.TRIGGER_GREEN: TriggerProperty(green),
+			objProps.TRIGGER_BLUE: TriggerProperty(blue),
+			objProps.FADE_IN: TriggerProperty(fadeIn),
+			objProps.HOLD: TriggerProperty(hold),
+			objProps.FADE_OUT: TriggerProperty(fadeOut),
+		})
+	}
 }
 
 impl block {
@@ -245,6 +270,22 @@ impl block {
 		$currentGroup(0,newGroup)
 		func()
 		$currentGroup(0,tmpGroup)
+	}
+}
+
+impl color {
+	fn pulse(self, red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0) {
+		AddTrigger({
+			objProps.OBJ_ID: TriggerProperty(1006),
+			objProps.TARGET: TriggerProperty(self),
+			objProps.TARGET_TYPE: TriggerProperty(0),
+			objProps.TRIGGER_RED: TriggerProperty(red),
+			objProps.TRIGGER_GREEN: TriggerProperty(green),
+			objProps.TRIGGER_BLUE: TriggerProperty(blue),
+			objProps.FADE_IN: TriggerProperty(fadeIn),
+			objProps.HOLD: TriggerProperty(hold),
+			objProps.FADE_OUT: TriggerProperty(fadeOut),
+		})
 	}
 }
 

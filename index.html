@@ -830,6 +830,15 @@ enum Easing {
 	SineOut = 15
 }
 
+enum Events {
+	JumpPush = 69
+	JumpRelease = 70
+	LeftPush = 71
+	LeftRelease = 72
+	RightPush = 73
+	RightRelease = 74
+}
+
 
 
 // wait(seconds: float) wait before running next trigger
@@ -837,11 +846,11 @@ wait(0.5)
 
 
 // onEvent(events: [int], func: fn (), extraId2: int = 0)   event trigger
-onEvent([69], fn () { 1g.move(10,0,1) } )
+onEvent([Events.JumpPush], fn () { 1g.move(10,0,1) } )
 
 
-// onUpdate(func: fn ())   this is the engine loop
-onEvent(fn () { $print("loop") } )
+// onEngineUpdate(func: fn ())   this is the engine loop
+onEngineUpdate(fn () { $print("loop") } )
 
 
 // group:
@@ -872,6 +881,8 @@ onEvent(fn () { $print("loop") } )
 1g.rotate(2g, 360, 2.5, Easing.EaseInOut)
 
 
+// group.pulse(red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0)
+1g.pulse(255, 0, 0, 0, 0, 0.4)
 
 // block
 
@@ -883,6 +894,16 @@ onEvent(fn () { $print("loop") } )
 
 // block.onCollisionExit(other: block, func: fn (), activateGroup = true)
 1b.onCollisionExit(2b, fn () { 1g.move(0,-10,0.1) } )
+
+
+
+
+// color
+
+
+
+// color.pulse(red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0)
+1c.pulse(255, 0, 0, 0, 0, 0.4)
 
                         </code></pre>
                     </div>
