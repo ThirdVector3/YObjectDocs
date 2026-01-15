@@ -1,5 +1,6 @@
 import "objProps" as objProps
 
+
 // easing
 const BACK_IN = 17
 const BACK_IN_OUT = 16
@@ -176,118 +177,6 @@ fn onEngineUpdate(func: fn ()) {
 	UPDATE_FUNCTIONS += [func]
 }
 
-impl group {
-	fn alpha(self, opacity: float, duration: float) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1007),
-			objProps.TARGET: TriggerProperty(self),
-			objProps.OPACITY: TriggerProperty(opacity),
-			objProps.DURATION: TriggerProperty(duration),
-		})
-	}
-	fn move(self, x: int, y: int, duration: float, easing: Easing = Easing.None) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(901),
-			objProps.TARGET: TriggerProperty(self),
-			objProps.MOVE_X: TriggerProperty(x * 3),
-			objProps.MOVE_Y: TriggerProperty(y * 3),
-			objProps.DURATION: TriggerProperty(duration),
-			objProps.EASING: TriggerProperty((easing)int),
-		})
-	}
-	fn toggle(self, on: bool) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1049),
-			objProps.TARGET: TriggerProperty(self),
-			objProps.ACTIVATE_GROUP: TriggerProperty(on),
-		})
-	}
-	fn stop(self) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1616),
-			objProps.TARGET: TriggerProperty(self),
-		})
-	}
-	fn spawn(self, delay: float = 0) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1268),
-			objProps.TARGET: TriggerProperty(self),
-			objProps.SPAWN_DURATION: TriggerProperty(delay),
-		})
-	}
-	fn rotate(self, center: group, degrees: float, duration: float, easing: Easing = Easing.None) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1346),
-			objProps.TARGET: TriggerProperty(self),
-			objProps.ROTATE_DEGREES: TriggerProperty(degrees),
-			objProps.DURATION: TriggerProperty(duration),
-			objProps.EASING: TriggerProperty((easing)int),
-			objProps.CENTER: TriggerProperty(center),
-		})
-	}
-	fn pulse(self, red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1006),
-			objProps.TARGET: TriggerProperty(self),
-			objProps.TARGET_TYPE: TriggerProperty(1),
-			objProps.TRIGGER_RED: TriggerProperty(red),
-			objProps.TRIGGER_GREEN: TriggerProperty(green),
-			objProps.TRIGGER_BLUE: TriggerProperty(blue),
-			objProps.FADE_IN: TriggerProperty(fadeIn),
-			objProps.HOLD: TriggerProperty(hold),
-			objProps.FADE_OUT: TriggerProperty(fadeOut),
-		})
-	}
-}
-
-impl block {
-	fn onCollision(self, other: block, func: fn (), activateGroup = true) {
-		tmpGroup = $currentGroup(0)
-		newGroup = ?g
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1815),
-			objProps.TARGET: TriggerProperty(newGroup),
-			objProps.BLOCK_A: TriggerProperty(self),
-			objProps.BLOCK_B: TriggerProperty(other),
-			objProps.ACTIVATE_GROUP: TriggerProperty(activateGroup),
-			objProps.ACTIVATE_ON_EXIT: TriggerProperty(false),
-		})
-		$currentGroup(0,newGroup)
-		func()
-		$currentGroup(0,tmpGroup)
-	}
-	fn onCollisionExit(self, other: block, func: fn (), activateGroup = true) {
-		tmpGroup = $currentGroup(0)
-		newGroup = ?g
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1815),
-			objProps.TARGET: TriggerProperty(newGroup),
-			objProps.BLOCK_A: TriggerProperty(self),
-			objProps.BLOCK_B: TriggerProperty(other),
-			objProps.ACTIVATE_GROUP: TriggerProperty(activateGroup),
-			objProps.ACTIVATE_ON_EXIT: TriggerProperty(true),
-		})
-		$currentGroup(0,newGroup)
-		func()
-		$currentGroup(0,tmpGroup)
-	}
-}
-
-impl color {
-	fn pulse(self, red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0) {
-		AddTrigger({
-			objProps.OBJ_ID: TriggerProperty(1006),
-			objProps.TARGET: TriggerProperty(self),
-			objProps.TARGET_TYPE: TriggerProperty(0),
-			objProps.TRIGGER_RED: TriggerProperty(red),
-			objProps.TRIGGER_GREEN: TriggerProperty(green),
-			objProps.TRIGGER_BLUE: TriggerProperty(blue),
-			objProps.FADE_IN: TriggerProperty(fadeIn),
-			objProps.HOLD: TriggerProperty(hold),
-			objProps.FADE_OUT: TriggerProperty(fadeOut),
-		})
-	}
-}
 
 fn wait(seconds: float) {
 	newGroup = ?g
