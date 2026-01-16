@@ -15,4 +15,15 @@ impl color {
 			objProps.FADE_OUT: TriggerProperty(fadeOut),
 		})
 	}
+	fn set(self, red: int, green: int, blue: int, duration: float, opacity: float = 1) {
+		AddTrigger({
+			objProps.OBJ_ID: TriggerProperty(899),
+			objProps.TARGET: TriggerProperty(self),
+			objProps.TRIGGER_RED: TriggerProperty(red),
+			objProps.TRIGGER_GREEN: TriggerProperty(green),
+			objProps.TRIGGER_BLUE: TriggerProperty(blue),
+			objProps.DURATION: TriggerProperty(duration),
+			objProps.OPACITY: TriggerProperty(opacity),
+		})
+	}
 }
