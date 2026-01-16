@@ -37,6 +37,7 @@
                         <li><a href="#variables"><i class="fas fa-memory"></i>Variables and Values</a></li>
                         <li><a href="#basic-triggers"><i class="fas fa-key"></i>Basic Triggers</a></li>
                         <li><a href="#conditions"><i class="fas fa-code-branch"></i>Conditions</a></li>
+                        <li><a href="#loops"><i class="fas fa-arrow-rotate-left"></i>Loops</a></li>
                         <li><a href="#functions"><i class="fas fa-list"></i>Functions</a></li>
                     </ul>
                 </li>
@@ -308,6 +309,34 @@ if condition {
                 </section>
 
 
+                <section id="loops" class="doc-section">
+                    <h1><i class="fas fa-arrow-rotate-left"></i>Loops</h1>
+                    <p>YObject has a quite standard syntax for loops:</p>
+                    
+                    <div style="margin-bottom: 20rem;" class="code-block">
+                        <div class="code-header">
+                            <span>Code</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-rust">// while loop
+i = 0
+while i &lt 10 {
+    // code
+    i += 1
+}
+
+
+array = [1,2,3,4]
+
+for element in array {
+    // code
+}
+</code></pre>
+                    </div>
+
+
+                </section>
+
                 
                 <section id="functions" class="doc-section">
                     <h1><i class="fas fa-list"></i>Functions</h1>
@@ -360,7 +389,7 @@ fn function2(a: int, b: float, c: int) -> float {
 
 
                 <section id="enums" class="doc-section">
-                    <h1><i class="fas fa-th"></i>Enums</h1>
+                    <h1><i class="fas fa-list-ol"></i>Enums</h1>
                     <p>You can define enums in YObject:</p>
                     
                     <div class="code-block">
@@ -397,7 +426,7 @@ $print((1)MuEnum) // also cast
                 </section>
 
                 <section id="pattern-matching" class="doc-section">
-                    <h1><i class="fas fa-th"></i>Pattern Matching</h1>
+                    <h1><i class="fas fa-list-check"></i>Pattern Matching</h1>
                     <p>You can check matching to patterns in YObject:</p>
                     
                     <div style="margin-bottom: 20rem;" class="code-block">

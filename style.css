@@ -429,11 +429,11 @@ body {
     background-color: var(--primary-dark);
     transform: translateY(-3px);
 }
-.hljs-string{
-  color: rgb(210, 134, 2);
-}
 .hljs-type {
   color: rgb(180, 208, 0);
+}
+.hljs-variable{
+  color: rgb(255, 255, 255);
 }
 .hljs{
     background-color: #1a1a1a;
