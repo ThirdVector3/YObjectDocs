@@ -9,7 +9,7 @@ impl group {
 			objProps.DURATION: TriggerProperty(duration),
 		})
 	}
-	fn move(self, x: int, y: int, duration: float, easing: Easing = Easing.None) {
+	fn move(self, x: int, y: int, duration: float, easing: Easing = Easing.None, silent: bool = false) {
 		AddTrigger({
 			objProps.OBJ_ID: TriggerProperty(901),
 			objProps.TARGET: TriggerProperty(self),
@@ -17,6 +17,19 @@ impl group {
 			objProps.MOVE_Y: TriggerProperty(y * 3),
 			objProps.DURATION: TriggerProperty(duration),
 			objProps.EASING: TriggerProperty((easing)int),
+			objProps.MOVE_SILENT: TriggerProperty(silent),
+		})
+	}
+	fn moveTo(self, other: group, center: group, duration: float, easing: Easing = Easing.None, silent: bool = false){
+		AddTrigger({
+			objProps.OBJ_ID: TriggerProperty(901),
+			objProps.TARGET: TriggerProperty(self),
+			objProps.TARGET_POS: TriggerProperty(other),
+			objProps.TARGET_MODE_CENTER: TriggerProperty(center),
+			objProps.DURATION: TriggerProperty(duration),
+			objProps.USE_TARGET: TriggerProperty(true),
+			objProps.EASING: TriggerProperty((easing)int),
+			objProps.MOVE_SILENT: TriggerProperty(silent),
 		})
 	}
 	fn toggle(self, on: bool) {

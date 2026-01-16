@@ -882,12 +882,25 @@ onEvent([Events.JumpPush], fn () { 1g.move(10,0,1) } )
 onEngineUpdate(fn () { $print("loop") } )
 
 
+// whileLoop(expression: fn() -> bool, func: fn(), delay: float = 0.005)
+// or
+// whileLoop(expression: fn() -> item, func: fn(), delay: float = 0.005)
+// or
+// whileLoop(expression: fn() -> timer, func: fn(), delay: float = 0.005)
+// creates loop with condition
+whileLoop(fn() -> bool { return true }, fn() { 1g.move(10, 0, 0) })
+
+
 // group:
 
 
 
-// group.move(x: int, y: int, time: float, easing: int = 0) moves group
+// group.move(x: int, y: int, time: float, easing: Easing = Easing.None, silent: bool = false) moves group
 1g.move(10, 0, 1.5, Easing.EaseInOut)
+
+
+// group.moveTo(other: group, center: group, duration: float, easing: Easing = Easing.None, silent: bool = false) moves group to other object
+1g.moveTo(2g, 1g, 1.5, Easing.EaseInOut)
 
 
 // group.alpha(opacity: float, duration: float) sets alpha value to group
@@ -906,22 +919,22 @@ onEngineUpdate(fn () { $print("loop") } )
 1g.spawn(1.5)
 
 
-// group.rotate(center: group, degrees: float, duration: float, easing: int = 0) spawns group
+// group.rotate(center: group, degrees: float, duration: float, easing: Easing = Easing.None) rotates group
 1g.rotate(2g, 360, 2.5, Easing.EaseInOut)
 
 
-// group.pulse(red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0)
+// group.pulse(red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0) pulses group
 1g.pulse(255, 0, 0, 0, 0, 0.4)
 
 // block
 
 
 
-// block.onCollision(other: block, func: fn (), activateGroup = true)
+// block.onCollision(other: block, func: fn (), activateGroup = true) call function on collision enter
 1b.onCollision(2b, fn () { 1g.move(0,10,0.1) } )
 
 
-// block.onCollisionExit(other: block, func: fn (), activateGroup = true)
+// block.onCollisionExit(other: block, func: fn (), activateGroup = true) call function on collision exit
 1b.onCollisionExit(2b, fn () { 1g.move(0,-10,0.1) } )
 
 
@@ -931,11 +944,11 @@ onEngineUpdate(fn () { $print("loop") } )
 
 
 
-// color.pulse(red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0)
+// color.pulse(red: int, green: int, blue: int, fadeIn: float = 0, hold: float = 0, fadeOut: float = 0) pulses color
 1c.pulse(255, 0, 0, 0, 0, 0.4)
 
 
-// color.set(red: int, green: int, blue: int, duration: float, opacity: float = 1)
+// color.set(red: int, green: int, blue: int, duration: float, opacity: float = 1) sets color
 1c.set(255, 0, 0, 1, 1.0)
 
                         </code></pre>
