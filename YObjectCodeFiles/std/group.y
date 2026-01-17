@@ -9,15 +9,20 @@ impl group {
 			objProps.DURATION: TriggerProperty(duration),
 		})
 	}
-	fn move(self, x: int, y: int, duration: float, easing: Easing = Easing.None, silent: bool = false) {
+	fn move(self, x: int, y: int, duration: float, easing: Easing = Easing.None, silent: bool = false, smallStep: bool = false) {
+		if !smallStep {
+			x *= 3
+			y *= 3
+		}
 		AddTrigger({
 			objProps.OBJ_ID: TriggerProperty(901),
 			objProps.TARGET: TriggerProperty(self),
-			objProps.MOVE_X: TriggerProperty(x * 3),
-			objProps.MOVE_Y: TriggerProperty(y * 3),
+			objProps.MOVE_X: TriggerProperty(x),
+			objProps.MOVE_Y: TriggerProperty(y),
 			objProps.DURATION: TriggerProperty(duration),
 			objProps.EASING: TriggerProperty((easing)int),
 			objProps.MOVE_SILENT: TriggerProperty(silent),
+			objProps.SMALL_STEP: TriggerProperty(smallStep),
 		})
 	}
 	fn moveTo(self, other: group, center: group, duration: float, easing: Easing = Easing.None, silent: bool = false){

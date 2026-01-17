@@ -1,7 +1,7 @@
 import "objProps" as objProps
 
 impl block {
-	fn onCollision(self, other: block, func: fn (), activateGroup = true) {
+	fn onCollision(self, other: block, func: fn (), activateGroup: bool = true) {
 		tmpGroup = $currentGroup(0)
 		newGroup = ?g
 		AddTrigger({
@@ -16,7 +16,7 @@ impl block {
 		func()
 		$currentGroup(0,tmpGroup)
 	}
-	fn onCollisionExit(self, other: block, func: fn (), activateGroup = true) {
+	fn onCollisionExit(self, other: block, func: fn (), activateGroup: bool = true) {
 		tmpGroup = $currentGroup(0)
 		newGroup = ?g
 		AddTrigger({

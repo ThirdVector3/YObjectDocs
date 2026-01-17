@@ -179,48 +179,59 @@ fn onEngineUpdate(func: fn ()) {
 
 
 fn wait(seconds: float) {
-	newGroup = ?g
+	newGroup____ = ?g
 	AddTrigger({
 		objProps.OBJ_ID: TriggerProperty(1268),
-		objProps.TARGET: TriggerProperty(newGroup),
+		objProps.TARGET: TriggerProperty(newGroup____),
 		objProps.SPAWN_DURATION: TriggerProperty(seconds),
 	})
-	$currentGroup(0,newGroup)
+	$currentGroup(0,newGroup____)
 }
 
 fn onEvent(events: [int], func: fn (), extraId2: int = 0) {
-	tmpGroup = $currentGroup(0)
-	newGroup = ?g
+	tmpGroup____ = $currentGroup(0)
+	newGroup____ = ?g // strange name because of bug
 	AddTrigger({
 		objProps.OBJ_ID: TriggerProperty(3604),
-		objProps.TARGET: TriggerProperty(newGroup),
+		objProps.TARGET: TriggerProperty(newGroup____),
 		objProps.EVENTS: TriggerProperty(events),
 		objProps.EXTRA_ID_2: TriggerProperty(extraId2),
 	})
-	$currentGroup(0,newGroup)
+	$currentGroup(0,newGroup____)
 	func()
-	$currentGroup(0,tmpGroup)
+	$currentGroup(0,tmpGroup____)
 }
 
-fn whileLoop(expression: fn() -> bool, func: fn(), delay: float = 0.005) {
-	tmpGroup = $currentGroup(0)
-	newGroup = ?g
-	newGroup.spawn()
-	$currentGroup(0,newGroup)
+fn whileLoop(expression: fn () -> bool, function: fn (), delay: float = 0.005) {
+	tmpGroup____ = $currentGroup(0)
+	newGroup____ = ?g
+	newGroup____.spawn()
+	$currentGroup(0,newGroup____)
 	if expression() {
-		func()
-		newGroup.spawn(delay)
+		function()
+		newGroup____.spawn(delay)
 	}
-	$currentGroup(0,tmpGroup)
+	$currentGroup(0,tmpGroup____)
 }
-fn whileLoop(expression: fn() -> item, func: fn(), delay: float = 0.005) {
-	tmpGroup = $currentGroup(0)
-	newGroup = ?g
-	newGroup.spawn()
-	$currentGroup(0,newGroup)
+fn whileLoop(expression: fn () -> item, func: fn (), delay: float = 0.005) {
+	tmpGroup____ = $currentGroup(0)
+	newGroup____ = ?g
+	newGroup____.spawn()
+	$currentGroup(0,newGroup____)
 	if expression() {
 		func()
-		newGroup.spawn(delay)
+		newGroup____.spawn(delay)
 	}
-	$currentGroup(0,tmpGroup)
+	$currentGroup(0,tmpGroup____)
+}
+fn whileLoop(expression: fn () -> timer, func: fn (), delay: float = 0.005) {
+	tmpGroup____ = $currentGroup(0)
+	newGroup____ = ?g
+	newGroup____.spawn()
+	$currentGroup(0,newGroup____)
+	if expression() {
+		func()
+		newGroup____.spawn(delay)
+	}
+	$currentGroup(0,tmpGroup____)
 }
