@@ -202,36 +202,36 @@ fn onEvent(events: [int], func: fn (), extraId2: int = 0) {
 	$currentGroup(0,tmpGroup____)
 }
 
-fn whileLoop(expression: fn () -> bool, function: fn (), delay: float = 0.005) {
-	tmpGroup____ = $currentGroup(0)
-	newGroup____ = ?g
-	newGroup____.spawn()
-	$currentGroup(0,newGroup____)
+fn whileLoop(expression: fn () -> bool, func: fn (), delay: float = 0.005) {
+	tmpGroup = $currentGroup(0)
+	newGroup = ?g
+	newGroup.spawn()
+	$currentGroup(0,newGroup)
 	if expression() {
-		function()
-		newGroup____.spawn(delay)
+		func()
+		newGroup.spawn(delay)
 	}
-	$currentGroup(0,tmpGroup____)
+	$currentGroup(0,tmpGroup)
 }
 fn whileLoop(expression: fn () -> item, func: fn (), delay: float = 0.005) {
-	tmpGroup____ = $currentGroup(0)
-	newGroup____ = ?g
-	newGroup____.spawn()
-	$currentGroup(0,newGroup____)
+	tmpGroup = $currentGroup(0)
+	newGroup = ?g
+	newGroup.spawn()
+	$currentGroup(0,newGroup)
 	if expression() {
 		func()
-		newGroup____.spawn(delay)
+		newGroup.spawn(delay)
 	}
-	$currentGroup(0,tmpGroup____)
+	$currentGroup(0,tmpGroup)
 }
 fn whileLoop(expression: fn () -> timer, func: fn (), delay: float = 0.005) {
-	tmpGroup____ = $currentGroup(0)
-	newGroup____ = ?g
-	newGroup____.spawn()
-	$currentGroup(0,newGroup____)
+	tmpGroup = $currentGroup(0)
+	newGroup = ?g
+	newGroup.spawn()
+	$currentGroup(0,newGroup)
 	if expression() {
 		func()
-		newGroup____.spawn(delay)
+		newGroup.spawn(delay)
 	}
-	$currentGroup(0,tmpGroup____)
+	$currentGroup(0,tmpGroup)
 }

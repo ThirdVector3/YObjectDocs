@@ -245,7 +245,8 @@ b = 0.5
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-rust">// group.move(x, y, duration, [easing type] = 0)
+                        <pre><code class="language-rust">/* group.move(x, y, duration, [easing type] = Easing.None,
+    [silent] = false, [smallStep] = false) */
 5g.move(10, 0, 0.5)</code></pre>
                     </div>
 
@@ -895,7 +896,7 @@ whileLoop(fn() -> bool { return true }, fn() { 1g.move(10, 0, 0) })
 
 
 
-// group.move(x: int, y: int, time: float, easing: Easing = Easing.None, silent: bool = false) moves group
+// group.move(x: int, y: int, time: float, easing: Easing = Easing.None, silent: bool = false, smallStep: bool = false) moves group
 1g.move(10, 0, 1.5, Easing.EaseInOut)
 
 
