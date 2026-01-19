@@ -179,27 +179,27 @@ fn onEngineUpdate(func: fn ()) {
 
 
 fn wait(seconds: float) {
-	newGroup____ = ?g
+	newGroup = ?g
 	AddTrigger({
 		objProps.OBJ_ID: TriggerProperty(1268),
-		objProps.TARGET: TriggerProperty(newGroup____),
+		objProps.TARGET: TriggerProperty(newGroup),
 		objProps.SPAWN_DURATION: TriggerProperty(seconds),
 	})
-	$currentGroup(0,newGroup____)
+	$currentGroup(0,newGroup)
 }
 
 fn onEvent(events: [int], func: fn (), extraId2: int = 0) {
-	tmpGroup____ = $currentGroup(0)
-	newGroup____ = ?g // strange name because of bug
+	tmpGroup = $currentGroup(0)
+	newGroup = ?g // strange name because of bug
 	AddTrigger({
 		objProps.OBJ_ID: TriggerProperty(3604),
-		objProps.TARGET: TriggerProperty(newGroup____),
+		objProps.TARGET: TriggerProperty(newGroup),
 		objProps.EVENTS: TriggerProperty(events),
 		objProps.EXTRA_ID_2: TriggerProperty(extraId2),
 	})
-	$currentGroup(0,newGroup____)
+	$currentGroup(0,newGroup)
 	func()
-	$currentGroup(0,tmpGroup____)
+	$currentGroup(0,tmpGroup)
 }
 
 fn whileLoop(expression: fn () -> bool, func: fn (), delay: float = 0.005) {
