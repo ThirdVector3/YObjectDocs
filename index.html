@@ -86,9 +86,9 @@
                             <i class="fas fa-lightbulb"></i>
                             <h3>Why YObject?</h3>
                         </div>
-                        <p>Beyond Triggers: Write actual code instead of relying solely on trigger combinations.</p>
                         <p>Object-Oriented: Create reusable object structures and traits with inheritance and encapsulation(soon).</p>
                         <p>Geode Integration: Seamlessly works with the Geode mod loader ecosystem.</p>
+                        <p>Beyond Triggers: Write actual code instead of relying solely on trigger combinations.</p>
                     </div>
 
                     <p style="margin-bottom: 20rem;">More info soon...</p>
@@ -207,23 +207,35 @@ boolean2 = !boolean // false</code></pre>
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-rust">groupID = 10g
-colorID = 10c
-itemID  = 10i
-timerID  = 10t
-blockID = 10b
+                        <pre><code class="language-rust">// Group IDs
+background = 1g
+player = 2g
+enemies = 3g
 
-// And get next free id:
+// Color IDs
+playerColor = 1c
+bgColor = BG
 
-groupID = ?g
-colorID = ?c
-itemID  = ?i
-timerID  = ?t
-blockID = ?b
+// Item IDs (for counters)
+coinsItem = 1i
+timeItem = 2i
 
+// Timer IDs
+spawnTimer = 1t
+gameTimer = 2t
 
+// Block IDs
+spike = 1b
+platform = 2b
 
-// you can interact with items and timers like this:
+// Get next available ID
+newGroup = ?g
+newColor = ?c
+newItem = ?i
+newTimer = ?t
+newBlock = ?b
+
+// You can interact with items and timers like this:
 a = 10i
 a += 1
 a = 0
@@ -275,23 +287,25 @@ wait(1)
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>if condition {
-    // code
+                        <pre><code>// Basic if statement
+if health > 0 {
+    player.alpha(1.0, 0.5)
+} else {
+    player.alpha(0.0, 0.5)
+    gameOver = true
 }
 
-if condition {
-    // code
+// Else-if chain
+if score >= 1000 {
+    rating = "S"
+} else if score >= 500 {
+    rating = "A"
+} else if score >= 200 {
+    rating = "B"
 } else {
-    // code
+    rating = "C"
 }
 
-if condition {
-    // code
-} else if other_condition {
-    // code
-} else {
-    // code
-}
 </code></pre>
                     </div>
 
@@ -301,8 +315,9 @@ if condition {
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-c">if 10i == 5 {
-    // it will create compare trigger
+                        <pre><code class="language-c">// Item comparisons (creates in-game triggers)
+if coinsItem == 10 {
+    5g.toggle(true)
 }
                         </code></pre>
                     </div>
@@ -319,19 +334,26 @@ if condition {
                             <span>Code</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code class="language-rust">// while loop
+                        <pre><code class="language-rust">// While loop
 i = 0
 while i &lt 10 {
-    // code
+    spawn_enemy(i * 100, 0)
     i += 1
+    wait(0.5)
+}
+
+// For loop over array
+powerups = ["speed", "jump", "shield"]
+for p in powerups {
+    create_powerup(p)
+    wait(1)
 }
 
 
-array = [1,2,3,4]
-
-for element in array {
-    // code
-}
+// For runtime loops
+whileLoop(fn() -> bool { return true }, fn() {
+    1g.move(10, 0, 0) 
+})
 </code></pre>
                     </div>
 
@@ -362,7 +384,7 @@ func(10, 15)
 // runtime call:
 func(10, 15)!
 
-// another runtime call, but with compiling code again
+// another runtime call, but with recompilation
 func(10,15)!!
 
 
