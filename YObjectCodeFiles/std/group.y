@@ -25,7 +25,10 @@ impl group {
 			objProps.SMALL_STEP: TriggerProperty(smallStep),
 		})
 	}
-	fn moveTo(self, other: group, center: group, duration: float, easing: Easing = Easing.None, silent: bool = false){
+	fn moveTo(self, other: group, center: group, duration: float, easing: Easing = Easing.None, silent: bool = false, xOnly: bool = false, yOnly: bool = false){
+		axes = 0
+		if xOnly { axes = 1 }
+		if yOnly { axes = 2 }
 		AddTrigger({
 			objProps.OBJ_ID: TriggerProperty(901),
 			objProps.TARGET: TriggerProperty(self),
@@ -35,6 +38,7 @@ impl group {
 			objProps.USE_TARGET: TriggerProperty(true),
 			objProps.EASING: TriggerProperty((easing)int),
 			objProps.MOVE_SILENT: TriggerProperty(silent),
+			objProps.TARGET_POS_AXES: TriggerProperty(axes),
 		})
 	}
 	fn toggle(self, on: bool) {

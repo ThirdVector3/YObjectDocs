@@ -64,7 +64,7 @@
             </ul>
             
             <div class="sidebar-footer">
-                <div class="version">Engine version: 0.0.1 alpha</div>
+                <div class="version">Engine version: 0.0.2</div>
             </div>
         </nav>
 
@@ -837,6 +837,212 @@ $getItemValue(1)
 // $isKeyPressed(key)
 // Returns is key pressed or not
 $isKeyPressed(65) // "A" key
+
+
+// $isPlayMode()
+// Returns is play mode or not
+$isPlayMode()
+
+
+
+// ImGui
+
+
+// $imGuiBegin(name)
+// Begins an ImGui window
+$imGuiBegin("My Window")
+
+
+// $imGuiEnd()
+// Ends an ImGui window
+$imGuiEnd()
+
+
+// $imGuiGetWindowPos() -> [x, y]
+// Gets the position of the current ImGui window
+$imGuiGetWindowPos()
+
+
+// $imGuiSetWindowPos(x, y)
+// Sets the position of the current ImGui window
+$imGuiSetWindowPos(100, 100)
+
+
+// $imGuiSetNextWindowPos(x, y)
+// Sets the position for the next ImGui window
+$imGuiSetNextWindowPos(200, 150)
+
+
+// $imGuiGetWindowSize() -> [x, y]
+// Gets the size of the current ImGui window
+$imGuiGetWindowSize()
+
+
+// $imGuiSetWindowSize(width, height)
+// Sets the size of the current ImGui window
+$imGuiSetWindowSize(400, 300)
+
+
+// $imGuiSetNextWindowSize(width, height)
+// Sets the size for the next ImGui window
+$imGuiSetNextWindowSize(500, 400)
+
+
+// $imGuiText(text)
+// Displays a text label in the current ImGui window
+$imGuiText("Hello World")
+
+
+// $imGuiButton(label)
+// Creates a button and returns true if clicked
+$imGuiButton("Click Me")
+
+
+// $imGuiCheckbox(label, value)
+// Creates a checkbox and returns the updated value
+$imGuiCheckbox("Enable Option", true)
+
+
+// $imGuiImage(textureID, width, height)
+// Displays an image with the specified texture
+$imGuiImage(123, 200, 150)
+
+
+// $imGuiInputText(label, buffer)
+// Creates a text input field and returns the entered text
+$imGuiInputText("Name", "Default")
+
+
+// $imGuiInputTextMultiline(label, buffer)
+// $imGuiInputTextMultiline(label, buffer, width, height)
+// Creates a multiline text input field
+$imGuiInputTextMultiline("Description", "Text", 300, 200)
+
+
+// $imGuiInputFloat(label, value)
+// Creates a float input field and returns the updated value
+$imGuiInputFloat("Speed", 1.5)
+
+
+// $imGuiInputInt(label, value)
+// Creates an integer input field and returns the updated value
+$imGuiInputInt("Count", 10)
+
+
+// $imGuiIsKeyPressed(key)
+// Returns true if the specified key was pressed this frame
+$imGuiIsKeyPressed("A")
+
+
+// $imGuiIsKeyDown(key)
+// Returns true if the specified key is currently held down
+$imGuiIsKeyDown("A")
+
+
+// $imGuiIsKeyUp(key)
+// Returns true if the specified key was released this frame
+$imGuiIsKeyUp("A")
+
+
+// $imGuiGetMousePos() -> [x, y]
+// Returns the current mouse position
+$imGuiGetMousePos()
+
+
+// $imGuiGetMouseDelta() -> [x, y]
+// Returns the mouse movement delta since last frame
+$imGuiGetMouseDelta()
+
+
+// $imGuiGetMouseWheel()
+// Returns the mouse wheel movement value
+$imGuiGetMouseWheel()
+
+
+// $imGuiIsMouseDown(button)
+// Returns true if the specified mouse button is currently down
+$imGuiIsMouseDown(0)
+
+
+// $imGuiIsMouseReleased(button)
+// Returns true if the specified mouse button was released this frame
+$imGuiIsMouseReleased(0)
+
+
+// $imGuiIsWindowFocused()
+// Returns true if the current ImGui window is focused
+$imGuiIsWindowFocused()
+
+
+
+// Shader Functions
+
+
+// $createShader(shaderName, vertexShaderText, fragmentShaderText)
+// Creates a shader from vertex and fragment shaders
+$createShader("myShader", "vertex shader code", "fragment shader code")
+
+
+// $setShaderUniform(shaderName, uniformName, value)    value = bool, int, float
+// $setShaderUniform(shaderName, uniformName, elem0, elem1)    elem = float
+// $setShaderUniform(shaderName, uniformName, elem0, elem1, elem2)    elem = float
+// $setShaderUniform(shaderName, uniformName, elem0, elem1, elem2, elem3)    elem = float
+// $setShaderUniform(shaderName, uniformName, elem0, elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8)    elem = float
+// $setShaderUniform(shaderName, uniformName, elem0, elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15)    elem = float
+// Sets a uniform value in the specified shader
+$setShaderUniform("myShader", "uColor", 1.0, 0.0, 0.0, 1.0)
+
+
+// $resizeShaderTexture(shaderName, width, height)
+// Resizes the render texture for the specified shader
+$resizeShaderTexture("myShader", 1920, 1080)
+
+
+// $setShaderData(shaderName, positions, uvs, indices)
+// Sets custom data for the shader
+$setShaderData("myShader", [...], [...], [...])
+
+
+// $getShaderRenderTextureID(shaderName)
+// Returns the render texture ID for the specified shader
+$getShaderRenderTextureID("myShader")
+
+
+
+// File Operations
+
+
+// $readFile(filePath)
+// Reads and returns the contents of a file
+$readFile("root/config.txt")
+
+
+// $writeFile(filePath, content)
+// Writes content to a file
+$writeFile("root/output.txt", "Hello World")
+
+
+// $compileFile(filePath)
+// Compiles a script file
+$compileFile("scripts/main.y")
+
+
+
+// Object Management
+
+
+// $removeObjectsWithGroup(group)
+// Removes all objects with the specified group name
+$removeObjectsWithGroup(9999)
+
+
+
+// 3D Model Processing
+
+
+// $parseObjFile(objFileText)
+// Parses an OBJ file and returns the mesh data
+$parseObjFile("...obj file text..")
                         </code></pre>
                     </div>
 
@@ -901,8 +1107,8 @@ wait(0.5)
 onEvent([Events.JumpPush], fn () { 1g.move(10,0,1) } )
 
 
-// onEngineUpdate(func: fn ())   this is the engine loop
-onEngineUpdate(fn () { $print("loop") } )
+// onEnginePlayUpdate(func: fn ())   this is the engine loop
+onEnginePlayUpdate(fn () { $print("loop") } )
 
 
 // whileLoop(expression: fn() -> bool, func: fn(), delay: float = 0.005)

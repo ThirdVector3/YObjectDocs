@@ -172,9 +172,105 @@ AddTrigger({
 })
 */
 
-UPDATE_FUNCTIONS = []
-fn onEngineUpdate(func: fn ()) {
-	UPDATE_FUNCTIONS += [func]
+
+enum ObjectPropertyValueType {
+	Int
+	Bool
+	Float
+	IntArray
+}
+
+struct ObjectPropertyValue {
+	type: ObjectPropertyValueType
+	intNumber: int
+	boolean: bool
+	floatNumber: float
+	intArray: [int]
+}
+
+fn ObjectProperty(value: int) -> ObjectPropertyValue {
+	ret = ObjectPropertyValue
+	ret.type = ObjectPropertyValueType.Int
+	ret.intNumber = value
+	return ret
+}
+fn ObjectProperty(value: bool) -> ObjectPropertyValue {
+	ret = ObjectPropertyValue
+	ret.type = ObjectPropertyValueType.Bool
+	ret.boolean = value
+	return ret
+}
+fn ObjectProperty(value: float) -> ObjectPropertyValue {
+	ret = ObjectPropertyValue
+	ret.type = ObjectPropertyValueType.Float
+	ret.floatNumber = value
+	return ret
+}
+fn ObjectProperty(value: [int]) -> ObjectPropertyValue {
+	ret = ObjectPropertyValue
+	ret.type = ObjectPropertyValueType.IntArray
+	ret.intArray = value
+	return ret
+}
+
+
+fn AddObject(props: {int: ObjectPropertyValue}) {
+	ret = ""
+	defaultProps = {
+		objProps.GROUPS: ObjectProperty([9999]),
+	}
+	for i in props {
+		if !(defaultProps[i]) {
+			defaultProps += {i: props[i]}
+		}
+		else {
+			defaultProps[i] = props[i]
+		}
+	}
+	
+	for i in defaultProps {
+		ret += (i)string + ","
+		
+		ret += match defaultProps[i].type {
+			== ObjectPropertyValueType.Int {
+				defaultProps[i].intNumber + ","
+			}
+			== ObjectPropertyValueType.Bool {
+				(defaultProps[i].boolean)int + ","
+			}
+			== ObjectPropertyValueType.Float {
+				defaultProps[i].floatNumber + ","
+			}
+			== ObjectPropertyValueType.IntArray {
+				tmp = ""
+				for elem in defaultProps[i].intArray {
+					tmp += elem + "."
+				}
+				tmp + ","
+			}
+		}
+	}
+	ret += ";"
+	//$print(ret + "\n")
+	$addObjectString(ret)
+}
+
+/* to add object:
+AddObject({
+	objProps.OBJ_ID: ObjectProperty(1),
+	objProps.X: ObjectProperty(30),
+	objProps.Y: ObjectProperty(30),
+)}
+*/
+
+PLAY_UPDATE_FUNCTIONS = []
+fn onEnginePlayUpdate(func: fn ()) {
+	PLAY_UPDATE_FUNCTIONS += [func]
+}
+
+IMGUI_UPDATE_FUNCTIONS = []
+fn onImGuiUpdate(func: fn ()) {
+	IMGUI_UPDATE_FUNCTIONS += [func]
 }
 
 
@@ -234,4 +330,144 @@ fn whileLoop(expression: fn () -> timer, func: fn (), delay: float = 0.005) {
 		newGroup.spawn(delay)
 	}
 	$currentGroup(0,tmpGroup)
+}
+
+fn itemToConst(it: item, values: [int], func: fn(value: int)) {
+	for i in values {
+		if it == i {
+			func(i)
+		}
+	}
+}
+
+fn setFunctionGroup(gr: group, func: fn()) {
+	tmpGroup = $currentGroup(0)
+	$currentGroup(0,gr)
+	func()
+	$currentGroup(0,tmpGroup)
+}
+
+
+impl string {
+	fn split(self, separator: string = "") -> [string] {
+		result = []
+		tmp = ""
+		if separator == "" {
+			for i in self {
+				result += [i + ""]
+			}
+			return result
+		}
+		i = 0
+		separatorLength = separator.length
+		selfLength = self.length
+		while i < selfLength {
+			if $substr(self, i, separatorLength) == separator {
+				result += [tmp + ""]
+				tmp = ""
+				i += separator.length - 1
+			}
+			else {
+				tmp += self[i]
+			}
+			i += 1
+		}
+		if tmp.length > 0 {
+			result += [tmp + ""]
+		}
+		return result
+	}
+}
+impl int {
+	fn parse(self, str: string) -> int {
+		result = 0
+		sign = 1
+		index = 0
+		strLength = str.length
+		
+		if str[index] + " " == "- "  {
+			sign = -1
+			index += 1
+		}
+		
+		while index < strLength {
+			c = str[index]
+			digit = 0
+			
+			if c == "0" { digit = 0 }
+			if c == "1" { digit = 1 }
+			if c == "2" { digit = 2 }
+			if c == "3" { digit = 3 }
+			if c == "4" { digit = 4 }
+			if c == "5" { digit = 5 }
+			if c == "6" { digit = 6 }
+			if c == "7" { digit = 7 }
+			if c == "8" { digit = 8 }
+			if c == "9" { digit = 9 }
+			
+			result = result * 10 + digit
+			
+			index += 1
+		}
+		
+		result *= sign
+		
+		self = result
+		return self
+	}
+}
+impl float {
+	fn parse(self, str: string) -> float {
+		result = 0.0
+		fraction = 0.0
+		divisor = 10.0
+		sign = 1
+		decimalPointFound = false
+		index = 0
+		strLength = str.length
+		
+		if str[index] + " " == "- "  {
+			sign = -1
+			index += 1
+		}
+		
+		while index < strLength {
+			c = str[index]
+			digit = 0
+			
+			if c == "0" { digit = 0 }
+			if c == "1" { digit = 1 }
+			if c == "2" { digit = 2 }
+			if c == "3" { digit = 3 }
+			if c == "4" { digit = 4 }
+			if c == "5" { digit = 5 }
+			if c == "6" { digit = 6 }
+			if c == "7" { digit = 7 }
+			if c == "8" { digit = 8 }
+			if c == "9" { digit = 9 }
+			if c == "." { digit = 10 }
+			
+			if digit < 10 {
+				if decimalPointFound {
+					fraction += digit / divisor
+					divisor *= 10
+				}
+				else {
+					result = result * 10 + digit
+				}
+			}
+			else {
+				if decimalPointFound { break }
+				decimalPointFound = true
+			}
+			
+			index += 1
+		}
+		
+		result += fraction
+		result *= sign
+		
+		self = result
+		return self
+	}
 }

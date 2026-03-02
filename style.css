@@ -454,6 +454,10 @@ body {
   color: rgba(255, 255, 255, 0.667);
 }
 
+.hljs-string {
+  color: rgb(220, 133, 11);
+}
+
 @media (max-width: 1024px) {
     .sidebar {
         transform: translateX(-100%);
